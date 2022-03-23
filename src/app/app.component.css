@@ -1,0 +1,13 @@
+.navbar-brand .navbar-item {
+    /* margin-left: 30px; */
+}
+
+.navbar-brand img {
+    margin-left: 30px;
+    width: 120%;
+    height: auto;
+}
+
+.navbar {
+    background-color: #C5D8A4;
+}

@@ -1,0 +1,20 @@
+#items-table {
+    margin: 20px 40px 0px;
+}
+
+#search {
+    width: 150px;
+}
+
+table {
+    width: 90%;
+    background-color: #F4FCD9;
+}
+
+th {
+    font-weight: 600;
+}
+
+button {
+    background-color: #BB9981;
+}

@@ -1,0 +1,27 @@
+<div id="items-table">
+    <div class="level">
+        <div class="level-left">
+            <h1 class="level-item title">Items</h1>
+        </div>
+        <div class="level-right">
+            <input id="search" class="level-item input is-rounded" type="text" placeholder="Search">
+            <button class="button is-rounded">Add</button>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+            <th>Name</th>
+            <th>Type</th>
+            <th>CreateDate</th>
+            <th>Finished</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of items">
+                <td>{{item.name}}</td>
+                <td>{{item.type}}</td>
+                <td>{{item.createDate}}</td>
+                <td>{{item.finished}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
