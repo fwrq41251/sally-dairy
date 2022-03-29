@@ -18,3 +18,7 @@ th {
 button {
     background-color: #BB9981;
 }
+
+tr:hover {
+    background-color: #E3CAA5;
+}

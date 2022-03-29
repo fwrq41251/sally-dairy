@@ -5,7 +5,7 @@
         </div>
         <div class="level-right">
             <input id="search" class="level-item input is-rounded" type="text" placeholder="Search">
-            <button class="button is-rounded">Add</button>
+            <button class="button is-rounded" (click)="itemModal.toggleModal()">Add</button>
         </div>
     </div>
     <table class="table">
@@ -19,9 +19,11 @@
             <tr *ngFor="let item of items">
                 <td>{{item.name}}</td>
                 <td>{{item.type}}</td>
-                <td>{{item.createDate}}</td>
+                <td>{{item.createDate | date:'longDate'}}</td>
                 <td>{{item.finished}}</td>
             </tr>
         </tbody>
     </table>
 </div>
+
+<app-plant-item-modal #itemModal></app-plant-item-modal>

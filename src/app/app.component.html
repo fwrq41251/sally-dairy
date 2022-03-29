@@ -1,12 +1,12 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a class="navbar-item" href="#">
+    <a class="navbar-item" routerLink="/">
       <img src="assets/img/tomato.png" width="40" height="40">
     </a>
-    <a class="navbar-item">
+    <a class="navbar-item" routerLink="/">
       Home
     </a>
   </div>
 </nav>
-
-<app-plant-table></app-plant-table>
+<!-- The routed views render in the <router-outlet>-->
+<router-outlet></router-outlet>
