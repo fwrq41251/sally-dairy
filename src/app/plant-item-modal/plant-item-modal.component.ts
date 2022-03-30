@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-plant-item-modal',
@@ -9,6 +10,11 @@ export class PlantItemModalComponent implements OnInit {
 
   @Input() displayItemModal = false;
 
+  newPlantForm = new FormGroup({
+    name: new FormControl(''),
+    type: new FormControl(''),
+  })
+
   constructor() { }
 
   ngOnInit(): void {
@@ -16,5 +22,9 @@ export class PlantItemModalComponent implements OnInit {
 
   toggleModal(): void {
     this.displayItemModal = !this.displayItemModal;
+  }
+
+  onSubmit(): void {
+    console.warn(this.newPlantForm.value);
   }
 }

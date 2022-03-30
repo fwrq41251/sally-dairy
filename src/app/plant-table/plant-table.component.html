@@ -20,7 +20,11 @@
                 <td>{{item.name}}</td>
                 <td>{{item.type}}</td>
                 <td>{{item.createDate | date:'longDate'}}</td>
-                <td>{{item.finished}}</td>
+                <td>
+                    {{item.finished}}
+                    <span class="tag is-danger" (click)="1">delete</span>
+                    <span class="tag is-light" (click)="itemModal.toggleModal()">edit</span>
+                </td>
             </tr>
         </tbody>
     </table>

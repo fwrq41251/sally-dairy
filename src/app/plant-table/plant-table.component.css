@@ -22,3 +22,12 @@ button {
 tr:hover {
     background-color: #E3CAA5;
 }
+
+table .tag {
+    float: right;
+    margin-left: 10px;
+}
+
+#deleteTag {
+    /* background-color: rgb(226, 81, 81); */
+}

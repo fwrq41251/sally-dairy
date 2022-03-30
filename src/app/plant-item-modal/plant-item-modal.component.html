@@ -1,9 +1,23 @@
 <div class="modal" [ngClass]="{'is-active': displayItemModal}">
     <div class="modal-background"></div>
     <div class="modal-content">
-        <div class="container">
-            my content
-        </div>
+        <form class="box" [formGroup]="newPlantForm" (ngSubmit)="onSubmit()">
+            <div class="field">
+              <label class="label">Name</label>
+              <div class="control">
+                <input class="input" type="text" placeholder="" formControlName="name">
+              </div>
+            </div>
+          
+            <div class="field">
+              <label class="label">Type</label>
+              <div class="control">
+                <input class="input" type="text" placeholder="" formControlName="type">
+              </div>
+            </div>
+          
+            <button class="button" type="submit">Save</button>
+          </form>
     </div>
     <button class="modal-close is-large" (click)="toggleModal()" aria-label="close"></button>
 </div>

@@ -7,6 +7,7 @@ import { PlantTableComponent } from './plant-table/plant-table.component';
 import { PlantItemModalComponent } from './plant-item-modal/plant-item-modal.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PlantDetailComponent } from './plant-detail/plant-detail.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { PlantDetailComponent } from './plant-detail/plant-detail.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

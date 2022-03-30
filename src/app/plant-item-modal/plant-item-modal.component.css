@@ -1,0 +1,12 @@
+.box {
+    width: 70%;
+    margin: auto;
+}
+
+.box button {
+    margin-top: 6px;
+}
+
+button {
+    background-color: #BB9981;
+}
