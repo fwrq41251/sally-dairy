@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { PlantItem } from './interface';
 
@@ -6,7 +7,7 @@ import { PlantItem } from './interface';
 })
 export class PlantItemService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   getItems(): PlantItem[] {
     return [
