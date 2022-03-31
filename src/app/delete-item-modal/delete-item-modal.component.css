@@ -1,0 +1,9 @@
+.modal-card-foot {
+    height: 25px;
+}
+
+.modal-card {
+    border-radius: 6px;
+    width: 30%;
+    margin: auto;
+}

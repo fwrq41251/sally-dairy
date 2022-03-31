@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { PlantItem } from '../interface';
 
 @Component({
   selector: 'app-plant-item-modal',
@@ -26,5 +27,13 @@ export class PlantItemModalComponent implements OnInit {
 
   onSubmit(): void {
     console.warn(this.newPlantForm.value);
+  }
+
+  editItem(item: PlantItem): void {
+    this.toggleModal();
+    this.newPlantForm.patchValue({
+      name: item.name,
+      type: item.type
+    });
   }
 }

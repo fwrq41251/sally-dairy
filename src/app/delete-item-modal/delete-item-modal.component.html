@@ -1,0 +1,11 @@
+<div class="modal" [ngClass]="{'is-active': displayDeleteModal}">
+    <div class="modal-card">
+        <section class="modal-card-body">
+            Sure to delete?
+        </section>
+        <footer class="modal-card-foot">
+            <span class="card-footer-item">Delete</span>
+            <span class="card-footer-item" (click)="toggleModal()">Cancel</span>
+        </footer>
+    </div>
+</div>

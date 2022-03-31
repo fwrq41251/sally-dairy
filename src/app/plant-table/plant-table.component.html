@@ -22,8 +22,8 @@
                 <td>{{item.createDate | date:'longDate'}}</td>
                 <td>
                     {{item.finished}}
-                    <span class="tag is-danger" (click)="1">delete</span>
-                    <span class="tag is-light" (click)="itemModal.toggleModal()">edit</span>
+                    <span class="tag is-danger" (click)="deleteModal.delteItem(item.id)">delete</span>
+                    <span class="tag is-light" (click)="itemModal.editItem(item)">edit</span>
                 </td>
             </tr>
         </tbody>
@@ -31,3 +31,4 @@
 </div>
 
 <app-plant-item-modal #itemModal></app-plant-item-modal>
+<app-delete-item-modal #deleteModal></app-delete-item-modal>

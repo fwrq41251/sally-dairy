@@ -8,6 +8,7 @@ import { PlantItemModalComponent } from './plant-item-modal/plant-item-modal.com
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PlantDetailComponent } from './plant-detail/plant-detail.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DeleteItemModalComponent } from './delete-item-modal/delete-item-modal.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     PlantTableComponent,
     PlantItemModalComponent,
     PageNotFoundComponent,
-    PlantDetailComponent
+    PlantDetailComponent,
+    DeleteItemModalComponent
   ],
   imports: [
     BrowserModule,
