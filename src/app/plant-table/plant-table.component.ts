@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { PlantItem } from '../interface';
-import { PlantItemModalComponent } from '../plant-item-modal/plant-item-modal.component';
 import { PlantItemService } from '../plant-item.service';
 
 @Component({
@@ -11,11 +10,21 @@ import { PlantItemService } from '../plant-item.service';
 export class PlantTableComponent implements OnInit {
 
   items: PlantItem[] = [];
+  fullItems: PlantItem[] = [];
 
   constructor(private plantItmeService: PlantItemService) { }
 
   ngOnInit(): void {
     this.items = this.plantItmeService.getItems();
+    this.fullItems = this.items;
+  }
+
+  filterItems(name: string): void {
+    if (name && name.length > 0) {
+      this.items = this.items.filter(i => i.name.startsWith(name))
+    } else {
+      this.items = this.fullItems;
+    }
   }
 
 }

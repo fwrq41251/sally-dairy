@@ -10,6 +10,7 @@ import { PlantItem } from '../interface';
 export class PlantItemModalComponent implements OnInit {
 
   @Input() displayItemModal = false;
+  showTypePanel = false;
 
   newPlantForm = new FormGroup({
     name: new FormControl(''),
@@ -23,23 +24,33 @@ export class PlantItemModalComponent implements OnInit {
 
   toggleModal(): void {
     this.displayItemModal = !this.displayItemModal;
+    this.showTypePanel = false;
   }
 
   onSubmit(): void {
     console.warn(this.newPlantForm.value);
   }
 
+  newItem(): void {
+    this.toggleModal();
+    this.newPlantForm.patchValue({
+      name: '',
+      type: '',
+    });
+  }
+
   editItem(item: PlantItem): void {
     this.toggleModal();
     this.newPlantForm.patchValue({
       name: item.name,
-      type: item.type
+      type: item.type,
     });
   }
 
   setType(type: string): void {
     this.newPlantForm.patchValue({
-      type: type
+      type: type,
     })
   }
+
 }
