@@ -36,4 +36,10 @@ export class PlantItemModalComponent implements OnInit {
       type: item.type
     });
   }
+
+  setType(type: string): void {
+    this.newPlantForm.patchValue({
+      type: type
+    })
+  }
 }

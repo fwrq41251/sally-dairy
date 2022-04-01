@@ -1,0 +1,45 @@
+@import url('https://cdn-uicons.flaticon.com/uicons-solid-straight/css/uicons-solid-straight.css');
+@import url('https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css');
+
+.columns {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+#newEvent {
+    margin-bottom:20px;
+    cursor: pointer;
+}
+
+#newEvent i {
+    position: relative;
+    top: 2px;
+}
+
+
+#newEvent span {
+    padding-left: 5px;
+}
+
+#cards .title {
+    padding-left: 20px;
+    margin-bottom: 0px;
+    color: #534340;
+}
+
+#left-content {
+    padding-top: 20px;
+}
+
+#events {
+    margin-top: 20px;
+}
+
+#events i {
+    position: relative;
+    top: 2px;
+}
+
+#events span {
+    margin-left: 5px;
+}

@@ -1,9 +1,47 @@
-    <div class="columns">
-        <div class="column is-3">
-            left
-            <input type="date" class="datePicker">
-        </div>
-        <div class="column is-9">
-            right
+<div class="columns">
+    <div class="column is-3" id="left-content">
+        <div id="newEvent" class="container" (click)="1"><i class="fi fi-ss-add"></i><span>Create Event</span></div>
+        <input type="date" class="date-picker">
+        <div id="events"><i class="fi fi-br-time-past"></i><span>施肥</span></div>
+    </div>
+    <div class="column is-9" id="cards">
+        <h3 class="title is-3">{{plantItem.name}}</h3>
+        <div class="columns">
+            <div class="column is-4">
+                <div class="card">
+                    <div class="card-image">
+                        <figure class="image is-1by1">
+                            <img src="https://s2.loli.net/2022/04/01/1CtdTKbSMxeyNL2.jpg" alt="Placeholder image">
+                        </figure>
+                    </div>
+                    <div class="card-content">
+                        <div class="content">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+                            <a href="#">#css</a> <a href="#">#responsive</a>
+                            <br>
+                            <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-4">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="content">
+                            Lorem ipsum leo risus, porta ac consectetur ac, vestibulum at eros. Donec id elit non mi
+                            porta
+                            gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes,
+                            nascetur
+                            ridiculus mus. Cras mattis consectetur purus sit amet fermentum.
+                            <br>
+                            <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-4">
+            </div>
         </div>
     </div>
+</div>

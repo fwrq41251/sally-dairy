@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import * as bulmaCalendar from 'bulma-calendar';
+import { PlantItem } from '../interface';
+import { PlantItemService } from '../plant-item.service';
 
 @Component({
   selector: 'app-plant-detail',
@@ -12,16 +13,16 @@ export class PlantDetailComponent implements OnInit {
 
   plantId = 0;
   calendar!: bulmaCalendar;
+  plantItem!: PlantItem
 
   constructor(
     private route: ActivatedRoute,
+    private plantItemService: PlantItemService
   ) { }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      this.plantId = params['id'];
-    })
-    this.calendar = bulmaCalendar.attach('.datePicker', {
+    this.plantId = Number(this.route.snapshot.paramMap.get('itemId'));
+    this.calendar = bulmaCalendar.attach('.date-picker', {
       type: "date",
       color: "primary",
       displayMode: "inline",
@@ -32,6 +33,7 @@ export class PlantDetailComponent implements OnInit {
     this.calendar.on('select', event => {
       this.showSelected();
     })
+    this.plantItem = this.plantItemService.getItemById(this.plantId);
   }
 
   showSelected(): void {

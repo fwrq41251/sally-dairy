@@ -12,7 +12,21 @@
       <div class="field">
         <label class="label">Type</label>
         <div class="control">
-          <input class="input" type="text" placeholder="" formControlName="type" [value]="newPlantForm.get('type')">
+          <article class="panel">
+            <input class="input" type="text" placeholder="" formControlName="type" [value]="newPlantForm.get('type')">
+            <a class="panel-block" (click)="setType('leaf')">
+              <span class="panel-icon">
+                <i class="fi fi-rr-leaf"></i>
+              </span>
+              leaf
+            </a>
+            <a class="panel-block" (click)="setType('ground')">
+              <span class="panel-icon">
+                <i class="fi fi-rr-leaf"></i>
+              </span>
+              ground
+            </a>
+          </article>
         </div>
       </div>
 
