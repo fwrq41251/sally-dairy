@@ -6,7 +6,7 @@ import { PlantTableComponent } from './plant-table/plant-table.component';
 
 const routes: Routes = [
   { path: 'plants', component: PlantTableComponent },
-  { path: 'plant-detail', component: PlantDetailComponent },
+  { path: 'plant-detail/:itemId', component: PlantDetailComponent },
   { path: '', redirectTo: '/plants', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent },
 ]

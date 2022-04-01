@@ -24,6 +24,7 @@
                     {{item.finished}}
                     <span class="tag is-danger" (click)="deleteModal.delteItem(item.id)">delete</span>
                     <span class="tag is-light" (click)="itemModal.editItem(item)">edit</span>
+                    <span class="tag is-link" [routerLink]="['/plant-detail', item.id]">detail</span>
                 </td>
             </tr>
         </tbody>
