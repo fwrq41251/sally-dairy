@@ -39,14 +39,6 @@ export class PlantItemModalComponent implements OnInit {
     });
   }
 
-  editItem(item: PlantItem): void {
-    this.toggleModal();
-    this.newPlantForm.patchValue({
-      name: item.name,
-      type: item.type,
-    });
-  }
-
   setType(type: string): void {
     this.newPlantForm.patchValue({
       type: type,

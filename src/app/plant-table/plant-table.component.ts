@@ -11,6 +11,7 @@ export class PlantTableComponent implements OnInit {
 
   items: PlantItem[] = [];
   fullItems: PlantItem[] = [];
+  focousItemId = 0;
 
   constructor(private plantItmeService: PlantItemService) { }
 
