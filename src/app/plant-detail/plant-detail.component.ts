@@ -32,8 +32,8 @@ export class PlantDetailComponent implements OnInit {
     })[0];
     this.calendar.on('select', event => {
       this.showSelected();
-    })
-    this.plantItem = this.plantItemService.getItemById(this.plantId);
+    });
+    this.plantItemService.getItemById(this.plantId).subscribe(item => this.plantItem = item);
   }
 
   showSelected(): void {

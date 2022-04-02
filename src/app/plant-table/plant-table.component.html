@@ -12,9 +12,12 @@
     <table class="table">
         <thead>
             <th>Name</th>
-            <th>Type</th>
-            <th>CreateDate</th>
-            <th>Finished</th>
+            <th>Category</th>
+            <th>SowDate</th>
+            <th>BloomDate</th>
+            <th>HarvestDate</th>
+            <th>Rating</th>
+            <th>SaveSeed</th>
         </thead>
         <tbody>
             <tr *ngFor="let item of items">
@@ -23,11 +26,14 @@
                     <span id="detail-button" [routerLink]="['/plant-detail', item.id]" class="tag"
                         *ngIf="focousItemId == item.id"><i class="fi fi-br-interlining"></i>detail</span>
                 </td>
-                <td><input type="text" class="input" [value]="item.type"></td>
-                <td><input type="text" class="input" [value]="item.createDate | date:'longDate'" readonly></td>
+                <td><input type="text" class="input" [value]="item.category"></td>
+                <td><input type="text" class="input" [value]="item.sowDate | date:'longDate'"></td>
+                <td><input type="text" class="input" [value]="item.bloomDate | date:'longDate'"></td>
+                <td><input type="text" class="input" [value]="item.harvestDate | date:'longDate'"></td>
+                <td><input type="text" class="input" [value]="item.rating"></td>
                 <td>
                     <label class="checkbox">
-                        <input type="checkbox" [checked]="item.finished">
+                        <input type="checkbox" [checked]="item.saveSeed">
                     </label>
                     <span class="tag is-danger" (click)="deleteModal.delteItem(item.id)">delete</span>
                 </td>

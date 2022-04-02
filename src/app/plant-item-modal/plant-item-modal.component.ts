@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { PlantItem } from '../interface';
+import { PlantItemService } from '../plant-item.service';
 
 @Component({
   selector: 'app-plant-item-modal',
@@ -17,7 +18,7 @@ export class PlantItemModalComponent implements OnInit {
     type: new FormControl(''),
   })
 
-  constructor() { }
+  constructor(private plantItemService: PlantItemService) { }
 
   ngOnInit(): void {
   }
@@ -27,8 +28,12 @@ export class PlantItemModalComponent implements OnInit {
     this.showTypePanel = false;
   }
 
-  onSubmit(): void {
-    console.warn(this.newPlantForm.value);
+  onSubmmit(): void {
+    let newItem =this.newPlantForm.value
+    console.log(newItem)
+    this.plantItemService.newItem(newItem);
+    this.toggleModal();
+    //todo emit to parent
   }
 
   newItem(): void {

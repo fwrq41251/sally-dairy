@@ -16,8 +16,10 @@ export class PlantTableComponent implements OnInit {
   constructor(private plantItmeService: PlantItemService) { }
 
   ngOnInit(): void {
-    this.items = this.plantItmeService.getItems();
-    this.fullItems = this.items;
+    this.plantItmeService.getItems().subscribe(plants => {
+      this.items = plants;
+      this.fullItems = plants;
+    });
   }
 
   filterItems(name: string): void {
