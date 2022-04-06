@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { CommonResult, NewPlantItem, PlantItem } from './interface';
 
 @Injectable({
@@ -10,7 +11,7 @@ export class PlantItemService {
 
   constructor(private http: HttpClient) { }
 
-  domain = "https://sally-dairy.herokuapp.com/";
+  domain = environment.apiUrl;
 
   getItems(): Observable<PlantItem[]> {
     const plants = this.http.get<PlantItem[]>(this.domain + "plants");
@@ -22,7 +23,16 @@ export class PlantItemService {
     return plant;
   }
 
-  newItem(item: NewPlantItem): Observable<CommonResult>{
+  newItem(item: NewPlantItem): Observable<CommonResult> {
     return this.http.post<CommonResult>(this.domain + "new-plant-item", item);
   }
+
+  deleteItem(id: number): Observable<CommonResult> {
+    return this.http.get<CommonResult>(this.domain + "delete-plant-item/" + id);
+  }
+
+  editItem(item: PlantItem): Observable<CommonResult> {
+    return this.http.post<CommonResult>(this.domain + "edit-plant-item", item);
+  }
+
 }

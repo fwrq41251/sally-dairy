@@ -8,8 +8,9 @@ import { PlantTableComponent } from './plant-table/plant-table.component';
 import { PlantItemModalComponent } from './plant-item-modal/plant-item-modal.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PlantDetailComponent } from './plant-detail/plant-detail.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DeleteItemModalComponent } from './delete-item-modal/delete-item-modal.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -25,8 +26,9 @@ import { DeleteItemModalComponent } from './delete-item-modal/delete-item-modal.
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    FormsModule,
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

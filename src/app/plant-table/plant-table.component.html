@@ -20,20 +20,20 @@
             <th>SaveSeed</th>
         </thead>
         <tbody>
-            <tr *ngFor="let item of items">
-                <td (mouseenter)="focousItemId = item.id" (mouseleave)="focousItemId = 0"><input type="text"
-                        class="input" [value]="item.name">
+            <tr *ngFor="let item of items" (change)="editItem(item)">
+                <td (mouseenter)="focousItemId = item.id" (mouseleave)="focousItemId = 0">
+                    <input type="text" class="input" [(ngModel)]="item.name">
                     <span id="detail-button" [routerLink]="['/plant-detail', item.id]" class="tag"
                         *ngIf="focousItemId == item.id"><i class="fi fi-br-interlining"></i>detail</span>
                 </td>
-                <td><input type="text" class="input" [value]="item.category"></td>
-                <td><input type="text" class="input" [value]="item.sowDate | date:'longDate'"></td>
-                <td><input type="text" class="input" [value]="item.bloomDate | date:'longDate'"></td>
-                <td><input type="text" class="input" [value]="item.harvestDate | date:'longDate'"></td>
-                <td><input type="text" class="input" [value]="item.rating"></td>
+                <td><input type="text" class="input" [(ngModel)]="item.category"></td>
+                <td><input type="date" class="input date-picker" [(ngModel)]="item.sowDate"></td>
+                <td><input type="date" class="input date-picker" [(ngModel)]="item.bloomDate"></td>
+                <td><input type="date" class="input date-picker" [(ngModel)]="item.harvestDate"></td>
+                <td><input type="text" class="input" [(ngModel)]="item.rating"></td>
                 <td>
                     <label class="checkbox">
-                        <input type="checkbox" [checked]="item.saveSeed">
+                        <input type="checkbox" [(ngModel)]="item.saveSeed">
                     </label>
                     <span class="tag is-danger" (click)="deleteModal.delteItem(item.id)">delete</span>
                 </td>
@@ -42,5 +42,5 @@
     </table>
 </div>
 
-<app-plant-item-modal #itemModal></app-plant-item-modal>
-<app-delete-item-modal #deleteModal></app-delete-item-modal>
+<app-plant-item-modal (newItemEvent)="reloadPage()" #itemModal></app-plant-item-modal>
+<app-delete-item-modal (deleteItemEvent)="reloadPage()" #deleteModal></app-delete-item-modal>

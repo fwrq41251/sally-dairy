@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { PlantItemService } from '../plant-item.service';
 
 @Component({
   selector: 'app-delete-item-modal',
@@ -9,19 +10,26 @@ export class DeleteItemModalComponent implements OnInit {
 
   itemId: number = 0;
   displayDeleteModal: boolean = false;
+  @Output() deleteItemEvent = new EventEmitter();
 
-  constructor() { }
+  constructor(private plantItemService: PlantItemService) { }
 
   ngOnInit(): void {
   }
 
   toggleModal(): void {
     this.displayDeleteModal = !this.displayDeleteModal;
-    console.log("itemId:" + this.itemId);
   }
 
   delteItem(itemId: number): void {
     this.toggleModal();
     this.itemId = itemId;
+  }
+
+  deleteSubmit(itemId: number): void {
+    this.plantItemService.deleteItem(itemId).subscribe(result => {
+      this.deleteItemEvent.emit();
+    });
+    this.toggleModal();
   }
 }

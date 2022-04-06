@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { PlantItem } from '../interface';
 import { PlantItemService } from '../plant-item.service';
@@ -12,6 +12,7 @@ export class PlantItemModalComponent implements OnInit {
 
   @Input() displayItemModal = false;
   showTypePanel = false;
+  @Output() newItemEvent = new EventEmitter();
 
   newPlantForm = new FormGroup({
     name: new FormControl(''),
@@ -29,11 +30,12 @@ export class PlantItemModalComponent implements OnInit {
   }
 
   onSubmmit(): void {
-    let newItem =this.newPlantForm.value
+    let newItem = this.newPlantForm.value
     console.log(newItem)
-    this.plantItemService.newItem(newItem);
+    this.plantItemService.newItem(newItem).subscribe(result => {
+      this.newItemEvent.emit();
+    });
     this.toggleModal();
-    //todo emit to parent
   }
 
   newItem(): void {

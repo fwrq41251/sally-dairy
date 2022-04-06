@@ -42,12 +42,13 @@ tr input {
     background-color: inherit;
 }
 
-input[type="text"]:focus {
+input[type="text"]:focus,
+input[type="date"]:focus {
     background-color: rgb(255, 255, 255);
 }
 
 #detail-button {
-    float:none;
+    float: none;
     margin-left: 3px;
 }
 
@@ -62,4 +63,39 @@ span i {
     position: relative;
     top: 1px;
     margin-right: 2px;
+}
+
+tr input.date-picker {
+    width: 158px;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+}
+
+input[type="date"]:in-range::-webkit-datetime-edit-year-field,
+input[type="date"]:in-range::-webkit-datetime-edit-month-field,
+input[type="date"]:in-range::-webkit-datetime-edit-day-field,
+input[type="date"]:in-range::-webkit-datetime-edit-text {
+    color: transparent;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+}
+
+/* prevent #detail-button to new line */
+@media screen and (max-width: 1578px) {
+    #detail-button {
+        /* display: inline; */
+    }
 }
