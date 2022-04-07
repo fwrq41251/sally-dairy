@@ -1,5 +1,5 @@
 <div id="items-table">
-    <div class="level">
+    <div class="level is-mobile">
         <div class="level-left">
             <h1 class="level-item title">Items</h1>
         </div>
@@ -9,37 +9,39 @@
             <button class="button is-rounded" (click)="itemModal.newItem()">Add</button>
         </div>
     </div>
-    <table class="table">
-        <thead>
-            <th>Name</th>
-            <th>Category</th>
-            <th>SowDate</th>
-            <th>BloomDate</th>
-            <th>HarvestDate</th>
-            <th>Rating</th>
-            <th>SaveSeed</th>
-        </thead>
-        <tbody>
-            <tr *ngFor="let item of items" (change)="editItem(item)">
-                <td (mouseenter)="focousItemId = item.id" (mouseleave)="focousItemId = 0">
-                    <input type="text" class="input" [(ngModel)]="item.name">
-                    <span id="detail-button" [routerLink]="['/plant-detail', item.id]" class="tag"
-                        *ngIf="focousItemId == item.id"><i class="fi fi-br-interlining"></i>detail</span>
-                </td>
-                <td><input type="text" class="input" [(ngModel)]="item.category"></td>
-                <td><input type="date" class="input date-picker" [(ngModel)]="item.sowDate"></td>
-                <td><input type="date" class="input date-picker" [(ngModel)]="item.bloomDate"></td>
-                <td><input type="date" class="input date-picker" [(ngModel)]="item.harvestDate"></td>
-                <td><input type="text" class="input" [(ngModel)]="item.rating"></td>
-                <td>
-                    <label class="checkbox">
-                        <input type="checkbox" [(ngModel)]="item.saveSeed">
-                    </label>
-                    <span class="tag is-danger" (click)="deleteModal.delteItem(item.id)">delete</span>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <div style="overflow-y:hidden;">
+        <table class="table">
+            <thead>
+                <th>Variety</th>
+                <th>Category</th>
+                <th>SowDate</th>
+                <th>BloomDate</th>
+                <th>HarvestDate</th>
+                <th>Rating</th>
+                <th>SaveSeed</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of items" (change)="editItem(item)">
+                    <td (mouseenter)="focousItemId = item.id" (mouseleave)="focousItemId = 0">
+                        <input type="text" class="input" [(ngModel)]="item.name">
+                        <span id="detail-button" [routerLink]="['/plant-detail', item.id]" class="tag"
+                            *ngIf="focousItemId == item.id"><i class="fi fi-br-interlining"></i>detail</span>
+                    </td>
+                    <td><input type="text" class="input" [(ngModel)]="item.category"></td>
+                    <td><input type="date" class="input date-picker" [(ngModel)]="item.sowDate"></td>
+                    <td><input type="date" class="input date-picker" [(ngModel)]="item.bloomDate"></td>
+                    <td><input type="date" class="input date-picker" [(ngModel)]="item.harvestDate"></td>
+                    <td><input type="text" class="input" [(ngModel)]="item.rating"></td>
+                    <td>
+                        <label class="checkbox">
+                            <input type="checkbox" [(ngModel)]="item.saveSeed">
+                        </label>
+                        <span class="tag is-danger" (click)="deleteModal.delteItem(item.id)">delete</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <app-plant-item-modal (newItemEvent)="reloadPage()" #itemModal></app-plant-item-modal>

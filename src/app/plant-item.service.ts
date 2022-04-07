@@ -35,4 +35,9 @@ export class PlantItemService {
     return this.http.post<CommonResult>(this.domain + "edit-plant-item", item);
   }
 
+  getCategories(): Observable<string[]> {
+    return this.http.get<string[]>(this.domain + "categories");
+  }
+
+
 }

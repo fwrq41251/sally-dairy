@@ -13,6 +13,7 @@ export class PlantItemModalComponent implements OnInit {
   @Input() displayItemModal = false;
   showTypePanel = false;
   @Output() newItemEvent = new EventEmitter();
+  categories: string[] = [];
 
   newPlantForm = new FormGroup({
     name: new FormControl(''),
@@ -22,6 +23,9 @@ export class PlantItemModalComponent implements OnInit {
   constructor(private plantItemService: PlantItemService) { }
 
   ngOnInit(): void {
+    this.plantItemService.getCategories().subscribe(categories => {
+      this.categories = categories;
+    });
   }
 
   toggleModal(): void {
@@ -50,6 +54,10 @@ export class PlantItemModalComponent implements OnInit {
     this.newPlantForm.patchValue({
       type: type,
     })
+  }
+
+  categoryEmpty(): boolean {
+    return this.categories.length == 0;
   }
 
 }

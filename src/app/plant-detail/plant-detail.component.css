@@ -2,8 +2,7 @@
 @import url('https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css');
 
 .columns {
-    margin-top: 10px;
-    margin-left: 10px;
+    margin: 10px;
 }
 
 #newEvent {
@@ -29,6 +28,7 @@
 
 #left-content {
     padding-top: 20px;
+    padding-left: 30px;
 }
 
 #events {
