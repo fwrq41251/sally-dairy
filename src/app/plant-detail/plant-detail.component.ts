@@ -33,12 +33,21 @@ export class PlantDetailComponent implements OnInit {
     this.calendar.on('select', event => {
       this.showSelected();
     });
-    this.plantItemService.getItemById(this.plantId).subscribe(item => this.plantItem = item);
+    this.plantItemService.getItemById(this.plantId).subscribe(item => {
+      this.plantItem = item;
+      console.log(item);
+    });
   }
 
   showSelected(): void {
     console.log(this.calendar.startDate);
     console.log(this.calendar.endDate);
+  }
+
+  saveNote(item: PlantItem) {
+    this.plantItemService.editItem(item).subscribe(result => {
+      console.log(result);
+    });
   }
 
 

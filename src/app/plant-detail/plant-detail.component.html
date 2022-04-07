@@ -4,7 +4,7 @@
             <div class="message-header">
                 <p>Note</p>
             </div>
-            <div class="message-body textarea" contenteditable="true"></div>
+            <div class="message-body textarea" contenteditable="true" [(ngModel)]="plantItem.note" (blur)="saveNote(plantItem)"></div>
         </article>
         <input type="date" class="date-picker">
         <div class="event" (click)="1"><i class="fi fi-ss-add"></i><span>Create Event</span></div>

@@ -7,6 +7,7 @@ export interface PlantItem {
     harvestDate: string;
     rating: number;
     saveSeed: boolean;
+    note: string;
 }
 
 export interface NewPlantItem {

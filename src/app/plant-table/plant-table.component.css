@@ -17,6 +17,11 @@ table {
 
 th {
     font-weight: 600;
+    width: 160px;
+}
+
+/* prevent detail-btn overflow */
+#head {
     width: 200px;
 }
 
