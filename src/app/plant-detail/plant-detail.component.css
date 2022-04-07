@@ -5,20 +5,20 @@
     margin: 10px;
 }
 
-#newEvent {
-    margin-bottom:20px;
+.event {
+    margin-top: 20px;
     cursor: pointer;
 }
 
-#newEvent i {
+.event span {
+    padding-left: 5px;
+}
+
+i {
     position: relative;
     top: 2px;
 }
 
-
-#newEvent span {
-    padding-left: 5px;
-}
 
 #cards .title {
     padding-left: 20px;
@@ -31,15 +31,10 @@
     padding-left: 30px;
 }
 
-#events {
-    margin-top: 20px;
-}
-
-#events i {
-    position: relative;
-    top: 2px;
-}
-
-#events span {
-    margin-left: 5px;
+.textarea {
+    background-color: #effaf5;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    height: auto;
 }

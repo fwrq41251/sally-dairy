@@ -1,8 +1,14 @@
 <div class="columns">
     <div class="column is-3-widescreen is-5-tablet" id="left-content">
-        <div id="newEvent" class="container" (click)="1"><i class="fi fi-ss-add"></i><span>Create Event</span></div>
+        <article class="message is-success">
+            <div class="message-header">
+                <p>Note</p>
+            </div>
+            <div class="message-body textarea" contenteditable="true"></div>
+        </article>
         <input type="date" class="date-picker">
-        <div id="events"><i class="fi fi-br-time-past"></i><span>施肥</span></div>
+        <div class="event" (click)="1"><i class="fi fi-ss-add"></i><span>Create Event</span></div>
+        <div class="event"><i class="fi fi-br-time-past"></i><span>施肥</span></div>
     </div>
     <div class="column is-9-widescreen" id="cards">
         <h3 class="title is-3">{{plantItem.name}}</h3>

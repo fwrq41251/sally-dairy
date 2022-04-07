@@ -10,28 +10,42 @@
 }
 
 table {
-    width: 100%;
     background-color: #F4FCD9;
+    white-space: nowrap;
+    table-layout: fixed;
 }
 
 th {
     font-weight: 600;
+    width: 200px;
 }
 
 tr:hover {
     background-color: #E3CAA5;
 }
 
+tr input {
+    width: 140px;
+}
+
+tr input.date-picker {
+    width: 158px;
+}
+
+/* table button style */
 table .tag {
-    float: right;
     cursor: pointer;
     position: relative;
-    top: 8px;
+    top: 7px;
+    margin-left: 3px;
+}
+
+#delete-btn {
+    float: right;
     margin-right: 5px;
 }
 
 td {
-    width: 100px;
     padding: 1px;
 }
 
@@ -46,11 +60,6 @@ input[type="date"]:focus {
     background-color: rgb(255, 255, 255);
 }
 
-#detail-button {
-    float: none;
-    margin-left: 3px;
-}
-
 .checkbox input {
     width: 40px;
     position: relative;
@@ -58,9 +67,9 @@ input[type="date"]:focus {
     height: 15px;
 }
 
-span i {
+i {
     position: relative;
-    top: 1px;
+    top: 2px;
     margin-right: 2px;
 }
 
@@ -86,20 +95,4 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     right: 0;
     top: 0;
     width: auto;
-}
-
-/* prevent #detail-button to new line */
-@media screen and (max-width: 1578px) {
-    #detail-button {
-    }
-}
-
-@media screen and (min-width: 1065px) {
-    tr input {
-        width: 140px;
-    }
-
-    tr input.date-picker {
-        width: 158px;
-    }
 }

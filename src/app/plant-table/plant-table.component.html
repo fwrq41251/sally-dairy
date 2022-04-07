@@ -9,22 +9,22 @@
             <button class="button is-rounded" (click)="itemModal.newItem()">Add</button>
         </div>
     </div>
-    <div style="overflow-y:hidden;">
-        <table class="table">
+    <div class="table-container">
+        <table class="table is-fullwidth">
             <thead>
-                <th>Variety</th>
-                <th>Category</th>
-                <th>SowDate</th>
-                <th>BloomDate</th>
-                <th>HarvestDate</th>
-                <th>Rating</th>
-                <th>SaveSeed</th>
+                <th><i class="fi fi-br-apple-whole"></i>Variety</th>
+                <th><i class="fi fi-br-list"></i>Category</th>
+                <th><i class="fi fi-br-clock"></i>SowDate</th>
+                <th><i class="fi fi-br-clock"></i>BloomDate</th>
+                <th><i class="fi fi-br-clock"></i>HarvestDate</th>
+                <th><i class="fi fi-br-heart"></i>Rating</th>
+                <th><i class="fi fi-br-check"></i>SaveSeed</th>
             </thead>
             <tbody>
                 <tr *ngFor="let item of items" (change)="editItem(item)">
-                    <td (mouseenter)="focousItemId = item.id" (mouseleave)="focousItemId = 0">
+                    <td (mouseenter)="focousItemId = item.id" (mouseleave)="focousItemId = 0" style="width: 15px;">
                         <input type="text" class="input" [(ngModel)]="item.name">
-                        <span id="detail-button" [routerLink]="['/plant-detail', item.id]" class="tag"
+                        <span id="detail-btn" [routerLink]="['/plant-detail', item.id]" class="tag"
                             *ngIf="focousItemId == item.id"><i class="fi fi-br-interlining"></i>detail</span>
                     </td>
                     <td><input type="text" class="input" [(ngModel)]="item.category"></td>
@@ -36,7 +36,7 @@
                         <label class="checkbox">
                             <input type="checkbox" [(ngModel)]="item.saveSeed">
                         </label>
-                        <span class="tag is-danger" (click)="deleteModal.delteItem(item.id)">delete</span>
+                        <span id="delete-btn" class="tag is-danger" (click)="deleteModal.delteItem(item.id)">delete</span>
                     </td>
                 </tr>
             </tbody>
