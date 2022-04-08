@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import * as bulmaCalendar from 'bulma-calendar';
-import { PlantItem } from '../interface';
+import { emptyItem, PlantItem } from '../interface';
 import { PlantItemService } from '../plant-item.service';
 
 @Component({
@@ -13,7 +13,7 @@ export class PlantDetailComponent implements OnInit {
 
   plantId = 0;
   calendar!: bulmaCalendar;
-  plantItem!: PlantItem
+  plantItem: PlantItem = emptyItem();
 
   constructor(
     private route: ActivatedRoute,
@@ -22,6 +22,9 @@ export class PlantDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.plantId = Number(this.route.snapshot.paramMap.get('itemId'));
+    this.plantItemService.getItemById(this.plantId).subscribe(item => {
+      this.plantItem = item;
+    });
     this.calendar = bulmaCalendar.attach('.date-picker', {
       type: "date",
       color: "primary",
@@ -33,10 +36,6 @@ export class PlantDetailComponent implements OnInit {
     this.calendar.on('select', event => {
       this.showSelected();
     });
-    this.plantItemService.getItemById(this.plantId).subscribe(item => {
-      this.plantItem = item;
-      console.log(item);
-    });
   }
 
   showSelected(): void {
@@ -45,6 +44,7 @@ export class PlantDetailComponent implements OnInit {
   }
 
   saveNote(item: PlantItem) {
+    console.log(item);
     this.plantItemService.editItem(item).subscribe(result => {
       console.log(result);
     });
@@ -53,3 +53,4 @@ export class PlantDetailComponent implements OnInit {
 
 
 }
+

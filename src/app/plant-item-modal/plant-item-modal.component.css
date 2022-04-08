@@ -4,8 +4,18 @@
 .box {
     width: 70%;
     margin: auto;
+    padding-bottom: 5px;
+    border-radius: 3px;
 }
 
-.box button {
-    margin-top: 6px;
+.box input {
+    width: 90%;
+}
+
+.box .panel {
+    width: 90%;
+}
+
+.is-horizontal {
+    margin-bottom: 15px;
 }

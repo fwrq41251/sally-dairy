@@ -11,6 +11,7 @@ import { PlantDetailComponent } from './plant-detail/plant-detail.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DeleteItemModalComponent } from './delete-item-modal/delete-item-modal.component';
 import { DatePipe } from '@angular/common';
+import { ItemLogModalComponent } from './item-log-modal/item-log-modal.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { DatePipe } from '@angular/common';
     PlantItemModalComponent,
     PageNotFoundComponent,
     PlantDetailComponent,
-    DeleteItemModalComponent
+    DeleteItemModalComponent,
+    ItemLogModalComponent
   ],
   imports: [
     BrowserModule,

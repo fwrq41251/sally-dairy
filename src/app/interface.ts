@@ -10,6 +10,21 @@ export interface PlantItem {
     note: string;
 }
 
+export function emptyItem(): PlantItem {
+    return {
+        id: 0,
+        name: "",
+        category: "",
+        sowDate: "",
+        bloomDate: "",
+        harvestDate: "",
+        rating: 1,
+        saveSeed: false,
+        note: "",
+    };
+}
+
+
 export interface NewPlantItem {
     name: string;
     category: string;

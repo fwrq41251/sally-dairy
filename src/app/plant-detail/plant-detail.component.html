@@ -4,14 +4,21 @@
             <div class="message-header">
                 <p>Note</p>
             </div>
-            <div class="message-body textarea" contenteditable="true" [(ngModel)]="plantItem.note" (blur)="saveNote(plantItem)"></div>
+            <div #note class="message-body textarea" contenteditable="true" [textContent]="plantItem.note" (input)="plantItem.note=note.innerText" (blur)="saveNote(plantItem)"></div>
         </article>
         <input type="date" class="date-picker">
         <div class="event" (click)="1"><i class="fi fi-ss-add"></i><span>Create Event</span></div>
         <div class="event"><i class="fi fi-br-time-past"></i><span>施肥</span></div>
     </div>
     <div class="column is-9-widescreen" id="cards">
-        <h3 class="title is-3">{{plantItem.name}}</h3>
+        <div class="level is-mobile">
+            <div class="level-left">
+                <h3 class="title is-3">{{plantItem.name}}</h3>
+            </div>
+            <div class="level-right">
+                <button id="add-btn" class="button" (click)="logModal.toggleModal()">add</button>
+            </div>
+        </div>
         <div class="columns">
             <div class="column is-4-widescreen">
                 <div class="card">
@@ -46,6 +53,22 @@
                     </div>
                 </div>
             </div>
+            <div class="column is-4-widescreen">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="content">
+                            Lorem ipsum leo risus, porta ac consectetur ac, vestibulum at eros. Donec id elit non mi
+                            porta
+                            gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes,
+                            nascetur
+                            ridiculus mus. Cras mattis consectetur purus sit amet fermentum.
+                            <br>
+                            <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+<app-item-log-modal #logModal></app-item-log-modal>

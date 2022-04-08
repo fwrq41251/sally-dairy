@@ -1,0 +1,18 @@
+.box {
+    border-radius: 3px;
+}
+
+.textarea {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    height: auto;
+}
+
+.button {
+    margin-top: 10px;
+}
+
+figure {
+    margin-top: 10px;
+}

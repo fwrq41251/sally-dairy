@@ -1,0 +1,14 @@
+<div class="modal" [ngClass]="{'is-active': displayModal}">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+        <form class="box" (ngSubmit)="1">
+            <div class="textarea" contenteditable="true" (paste)="onPaste($event)">
+            </div>
+            <figure>
+                <img #imgRenderer />
+            </figure>
+            <button class="button" type="submit">Save</button>
+        </form>
+    </div>
+    <button class="modal-close is-large" (click)="toggleModal()" aria-label="close"></button>
+</div>

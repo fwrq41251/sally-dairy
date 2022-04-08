@@ -19,6 +19,10 @@ i {
     top: 2px;
 }
 
+.level {
+    margin-bottom: 10px;
+}
+
 
 #cards .title {
     padding-left: 20px;
@@ -37,4 +41,8 @@ i {
     -moz-box-shadow: none;
     box-shadow: none;
     height: auto;
+}
+
+#add-btn {
+    margin-right: 20px;
 }
