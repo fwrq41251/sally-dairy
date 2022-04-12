@@ -1,4 +1,6 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
+import { PlantDetailService } from '../plant-detail.service';
 
 @Component({
   selector: 'app-item-log-modal',
@@ -9,9 +11,12 @@ export class ItemLogModalComponent implements OnInit {
 
   displayModal = false;
   rederImage = false;
+  log = "";
+  @Input() itemId = 0;
   @ViewChild('imgRenderer') imgRenderer!: ElementRef;
+  @Output() newLogEvent = new EventEmitter();
 
-  constructor() { }
+  constructor(private itemDetailService: PlantDetailService) { }
 
   ngOnInit(): void {
   }
@@ -23,7 +28,7 @@ export class ItemLogModalComponent implements OnInit {
   /**
    * Paste from clipboard
    */
-   onPaste(event: any) {
+  onPaste(event: any) {
     const items = (event.clipboardData || event.originalEvent.clipboardData).items;
     let blob = null;
 
@@ -45,4 +50,16 @@ export class ItemLogModalComponent implements OnInit {
       reader.readAsDataURL(blob);
     }
   }
+
+  onSubmmit(): void {
+    let newLog = {
+      log: this.log,
+      plantItemId: this.itemId,
+    };
+    this.itemDetailService.saveLog(newLog).subscribe(_ => {
+      this.newLogEvent.emit();
+    });
+    this.toggleModal();
+  }
+
 }

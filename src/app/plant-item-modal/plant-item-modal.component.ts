@@ -35,7 +35,6 @@ export class PlantItemModalComponent implements OnInit {
 
   onSubmmit(): void {
     let newItem = this.newPlantForm.value
-    console.log(newItem)
     this.plantItemService.newItem(newItem).subscribe(result => {
       this.newItemEvent.emit();
     });

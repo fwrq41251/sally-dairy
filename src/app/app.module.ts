@@ -13,6 +13,7 @@ import { DeleteItemModalComponent } from './delete-item-modal/delete-item-modal.
 import { DatePipe } from '@angular/common';
 import { ItemLogModalComponent } from './item-log-modal/item-log-modal.component';
 import { StarTagComponent } from './star-tag/star-tag.component';
+import { NgxMasonryModule } from 'ngx-masonry';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { StarTagComponent } from './star-tag/star-tag.component';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
+    NgxMasonryModule,
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

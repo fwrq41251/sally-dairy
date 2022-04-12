@@ -1,8 +1,8 @@
 <div class="modal" [ngClass]="{'is-active': displayModal}">
     <div class="modal-background"></div>
     <div class="modal-content">
-        <form class="box" (ngSubmit)="1">
-            <div class="textarea" contenteditable="true" (paste)="onPaste($event)">
+        <form class="box" (ngSubmit)="onSubmmit()">
+            <div #logArea class="textarea" contenteditable="true" (input)="log=logArea.innerText" (paste)="onPaste($event)">
             </div>
             <figure>
                 <img #imgRenderer />

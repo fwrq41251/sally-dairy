@@ -8,11 +8,11 @@
     -moz-box-shadow: none;
     box-shadow: none;
     height: auto;
-    border: 0px;
 }
 
 .textarea:hover {
     background-color: #efefef;
+    border: 0px;
 }
 
 .textarea:focus {

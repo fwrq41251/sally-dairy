@@ -4,7 +4,8 @@
             <div class="message-header">
                 <p>Note</p>
             </div>
-            <div #note class="message-body textarea" contenteditable="true" [textContent]="plantItem.note" (input)="plantItem.note=note.innerText" (blur)="saveNote(plantItem)"></div>
+            <div #note class="message-body textarea" contenteditable="true" [textContent]="plantItem.note"
+                (input)="plantItem.note=note.innerText" (blur)="saveNote(plantItem)"></div>
         </article>
         <input type="date" class="date-picker">
         <div class="event" (click)="1"><i class="fi fi-ss-add"></i><span>Create Event</span></div>
@@ -16,54 +17,22 @@
                 <h3 class="title is-3">{{plantItem.name}}</h3>
             </div>
             <div class="level-right">
-                <button id="add-btn" class="button" (click)="logModal.toggleModal()">add</button>
+                <button id="add-btn" class="button" (click)="logModal.toggleModal()">Add</button>
             </div>
         </div>
-        <div class="columns">
-            <div class="column is-4-widescreen">
+        <div class="masonry">
+            <div class="masonry-item" *ngFor="let log of logs">
                 <div class="card">
-                    <div class="card-image">
+                    <div class="card-image" *ngIf="log.image">
                         <figure class="image is-1by1">
-                            <img src="https://s2.loli.net/2022/04/01/1CtdTKbSMxeyNL2.jpg" alt="Placeholder image">
+                            <img [src]="log.image" alt="Placeholder image">
                         </figure>
                     </div>
                     <div class="card-content">
                         <div class="content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                            Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-                            <a href="#">#css</a> <a href="#">#responsive</a>
+                            {{log.log}}
                             <br>
-                            <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="column is-4-widescreen">
-                <div class="card">
-                    <div class="card-content">
-                        <div class="content">
-                            Lorem ipsum leo risus, porta ac consectetur ac, vestibulum at eros. Donec id elit non mi
-                            porta
-                            gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes,
-                            nascetur
-                            ridiculus mus. Cras mattis consectetur purus sit amet fermentum.
-                            <br>
-                            <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="column is-4-widescreen">
-                <div class="card">
-                    <div class="card-content">
-                        <div class="content">
-                            Lorem ipsum leo risus, porta ac consectetur ac, vestibulum at eros. Donec id elit non mi
-                            porta
-                            gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes,
-                            nascetur
-                            ridiculus mus. Cras mattis consectetur purus sit amet fermentum.
-                            <br>
-                            <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                            <time datetime="2016-1-1">{{log.createDate | date:'h:mm a - d MMM y'}}</time>
                         </div>
                     </div>
                 </div>
@@ -71,4 +40,4 @@
         </div>
     </div>
 </div>
-<app-item-log-modal #logModal></app-item-log-modal>
+<app-item-log-modal (newLogEvent)="reloadPage()" [itemId]="plantId" #logModal></app-item-log-modal>

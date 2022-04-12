@@ -24,7 +24,6 @@ export function emptyItem(): PlantItem {
     };
 }
 
-
 export interface NewPlantItem {
     name: string;
     category: string;
@@ -33,4 +32,18 @@ export interface NewPlantItem {
 export interface CommonResult {
     success: boolean;
     message: string;
+}
+
+export interface NewItemLog {
+    plantItemId: number;
+    log: string;
+    image?: string;
+}
+
+export interface ItemLog {
+    id: number;
+    plantItemId: number;
+    log: string;
+    image: string;
+    createDate: string;
 }

@@ -29,15 +29,15 @@
                             *ngIf="item.showDetailButton"><i class="fi fi-br-interlining"></i>detail</span>
                     </td>
                     <td><input type="text" class="input" [(ngModel)]="item.category"></td>
-                    <td><input type="date" class="input date-picker" [(ngModel)]="item.sowDate"></td>
-                    <td><input type="date" class="input date-picker" [(ngModel)]="item.bloomDate"></td>
-                    <td><input type="date" class="input date-picker" [(ngModel)]="item.harvestDate"></td>
-                    <td (click)="item.showRatingPanel = !item.showRatingPanel">
-                        <span id="rating" tabindex="1" (blur)="item.showRatingPanel=false">
+                    <td><input type="date" class="input date-picker is-unselectable" [(ngModel)]="item.sowDate"></td>
+                    <td><input type="date" class="input date-picker is-unselectable" [(ngModel)]="item.bloomDate"></td>
+                    <td><input type="date" class="input date-picker is-unselectable" [(ngModel)]="item.harvestDate"></td>
+                    <td (click)="item.showRatingPanel=true" (blur)="item.showRatingPanel=false" tabindex="1">
+                        <span id="rating" class="is-unselectable">
                             <app-star-tag [count]="item.rating"></app-star-tag>
                         </span>
                         <nav class="panel" *ngIf="item.showRatingPanel">
-                            <a *ngFor="let r of [5, 4, 3, 2, 1]" class="panel-block" (click)="setRating(r, item)">
+                            <a *ngFor="let r of [5, 4, 3, 2, 1]" class="panel-block" (click)="setRating(r, item, $event)">
                                 <app-star-tag [count]="r"></app-star-tag>
                             </a>
                         </nav>

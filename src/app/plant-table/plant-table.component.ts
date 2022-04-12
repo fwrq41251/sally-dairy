@@ -1,7 +1,6 @@
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { PlantItem } from '../interface';
 import { PlantItemService } from '../plant-item.service';
-import * as bulmaCalendar from 'bulma-calendar';
 import { DatePipe } from '@angular/common';
 
 @Component({
@@ -14,7 +13,6 @@ export class PlantTableComponent implements OnInit {
 
   items: PlantItemRow[] = [];
   fullItems: PlantItemRow[] = [];
-  @ViewChild('rating') ratingArea!: ElementRef;
 
   constructor(
     private plantItmeService: PlantItemService, private datepipe: DatePipe
@@ -60,9 +58,11 @@ export class PlantTableComponent implements OnInit {
     });
   }
 
-  setRating(rating: number, item: PlantItem): void {
+  setRating(rating: number, item: PlantItemRow, event: Event): void {
     item.rating = rating;
     this.editItem(item);
+    item.showRatingPanel=false
+    event.stopPropagation();
   }
 
   reloadPage() {
