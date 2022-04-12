@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { PlantItem } from '../interface';
 import { PlantItemService } from '../plant-item.service';
 import * as bulmaCalendar from 'bulma-calendar';
@@ -9,11 +9,12 @@ import { DatePipe } from '@angular/common';
   templateUrl: './plant-table.component.html',
   styleUrls: ['./plant-table.component.css'],
 })
+
 export class PlantTableComponent implements OnInit {
 
-  items: PlantItem[] = [];
-  fullItems: PlantItem[] = [];
-  focousItemId = 0;
+  items: PlantItemRow[] = [];
+  fullItems: PlantItemRow[] = [];
+  @ViewChild('rating') ratingArea!: ElementRef;
 
   constructor(
     private plantItmeService: PlantItemService, private datepipe: DatePipe
@@ -26,14 +27,23 @@ export class PlantTableComponent implements OnInit {
         p.bloomDate = this.datepipe.transform(p.bloomDate, 'yyyy-MM-dd')!;
         p.harvestDate = this.datepipe.transform(p.harvestDate, 'yyyy-MM-dd')!;
       });
-      this.items = plants;
-      this.fullItems = plants;
+      this.items = plants.map(p => {
+        return {
+          id: p.id,
+          name: p.name,
+          category: p.category,
+          sowDate: p.sowDate,
+          bloomDate: p.bloomDate,
+          harvestDate: p.harvestDate,
+          rating: p.rating,
+          saveSeed: p.saveSeed,
+          note: "",
+          showDetailButton: false,
+          showRatingPanel: false,
+        }
+      });
+      this.fullItems = this.items;
     });
-    // bulmaCalendar.attach('.date-picker', {
-    //   type: "date",
-    //   color: "primary",
-    //   showHeader: false,
-    // });
   }
 
   filterItems(name: string): void {
@@ -50,8 +60,18 @@ export class PlantTableComponent implements OnInit {
     });
   }
 
+  setRating(rating: number, item: PlantItem): void {
+    item.rating = rating;
+    this.editItem(item);
+  }
+
   reloadPage() {
     window.location.reload();
   }
 
+}
+
+interface PlantItemRow extends PlantItem {
+  showDetailButton: boolean;
+  showRatingPanel: boolean;
 }

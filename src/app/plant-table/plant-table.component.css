@@ -13,6 +13,7 @@ table {
     background-color: #F4FCD9;
     white-space: nowrap;
     table-layout: fixed;
+    overflow:visible;
 }
 
 th {
@@ -76,6 +77,25 @@ i {
     position: relative;
     top: 2px;
     margin-right: 2px;
+}
+
+#rating {
+    position: relative;
+    top: 7px;
+    cursor: pointer;
+}
+
+td .panel {
+    margin-top: 8px;
+    background-color: white;
+    border-radius: 3px;
+    position: fixed;
+    z-index: 1;
+}
+
+.panel-block,
+.panel-tabs {
+    border-bottom: 0px;
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {

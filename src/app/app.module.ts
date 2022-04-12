@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DeleteItemModalComponent } from './delete-item-modal/delete-item-modal.component';
 import { DatePipe } from '@angular/common';
 import { ItemLogModalComponent } from './item-log-modal/item-log-modal.component';
+import { StarTagComponent } from './star-tag/star-tag.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ItemLogModalComponent } from './item-log-modal/item-log-modal.component
     PageNotFoundComponent,
     PlantDetailComponent,
     DeleteItemModalComponent,
-    ItemLogModalComponent
+    ItemLogModalComponent,
+    StarTagComponent
   ],
   imports: [
     BrowserModule,

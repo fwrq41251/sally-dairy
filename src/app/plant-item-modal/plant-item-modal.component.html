@@ -23,7 +23,7 @@
           <div class="field">
             <div class="control">
               <input class="input" type="text" placeholder="" formControlName="type"
-                (focus)="showTypePanel = !categoryEmpty()" (blur)="showTypePanel = false"
+                (focus)="showTypePanel = !categoryEmpty()" 
                 [value]="newPlantForm.get('type')">
               <article class="panel" *ngIf="showTypePanel">
                 <a *ngFor="let category of categories" class="panel-block" (click)="setType(category)">

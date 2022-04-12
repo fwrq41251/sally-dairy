@@ -22,21 +22,32 @@
             </thead>
             <tbody>
                 <tr *ngFor="let item of items" (change)="editItem(item)">
-                    <td (mouseenter)="focousItemId = item.id" (mouseleave)="focousItemId = 0" style="width: 15px;">
+                    <td style="width: 15px;" (mouseenter)="item.showDetailButton = true"
+                        (mouseleave)="item.showDetailButton = false">
                         <input type="text" class="input" [(ngModel)]="item.name">
                         <span id="detail-btn" [routerLink]="['/plant-detail', item.id]" class="tag"
-                            *ngIf="focousItemId == item.id"><i class="fi fi-br-interlining"></i>detail</span>
+                            *ngIf="item.showDetailButton"><i class="fi fi-br-interlining"></i>detail</span>
                     </td>
                     <td><input type="text" class="input" [(ngModel)]="item.category"></td>
                     <td><input type="date" class="input date-picker" [(ngModel)]="item.sowDate"></td>
                     <td><input type="date" class="input date-picker" [(ngModel)]="item.bloomDate"></td>
                     <td><input type="date" class="input date-picker" [(ngModel)]="item.harvestDate"></td>
-                    <td><input type="text" class="input" [(ngModel)]="item.rating"></td>
+                    <td (click)="item.showRatingPanel = !item.showRatingPanel">
+                        <span id="rating" tabindex="1" (blur)="item.showRatingPanel=false">
+                            <app-star-tag [count]="item.rating"></app-star-tag>
+                        </span>
+                        <nav class="panel" *ngIf="item.showRatingPanel">
+                            <a *ngFor="let r of [5, 4, 3, 2, 1]" class="panel-block" (click)="setRating(r, item)">
+                                <app-star-tag [count]="r"></app-star-tag>
+                            </a>
+                        </nav>
+                    </td>
                     <td>
                         <label class="checkbox">
                             <input type="checkbox" [(ngModel)]="item.saveSeed">
                         </label>
-                        <span id="delete-btn" class="tag is-danger" (click)="deleteModal.delteItem(item.id)">delete</span>
+                        <span id="delete-btn" class="tag is-danger"
+                            (click)="deleteModal.delteItem(item.id)">delete</span>
                     </td>
                 </tr>
             </tbody>
