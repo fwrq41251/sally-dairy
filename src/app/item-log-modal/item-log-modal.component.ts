@@ -1,5 +1,7 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { NgxDropzoneChangeEvent } from 'ngx-dropzone';
+import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
+import { environment } from 'src/environments/environment';
 import { PlantDetailService } from '../plant-detail.service';
 
 @Component({
@@ -12,9 +14,10 @@ export class ItemLogModalComponent implements OnInit {
   displayModal = false;
   rederImage = false;
   log = "";
+  image = "";
   @Input() itemId = 0;
-  @ViewChild('imgRenderer') imgRenderer!: ElementRef;
   @Output() newLogEvent = new EventEmitter();
+  files: File[] = [];
 
   constructor(private itemDetailService: PlantDetailService) { }
 
@@ -45,7 +48,6 @@ export class ItemLogModalComponent implements OnInit {
       reader.onload = (evt: any) => {
         console.log(evt.target.result); // data url!
         this.rederImage = true;
-        this.imgRenderer.nativeElement.src = evt.target.result;
       };
       reader.readAsDataURL(blob);
     }
@@ -55,11 +57,25 @@ export class ItemLogModalComponent implements OnInit {
     let newLog = {
       log: this.log,
       plantItemId: this.itemId,
+      image: this.image,
     };
     this.itemDetailService.saveLog(newLog).subscribe(_ => {
       this.newLogEvent.emit();
     });
     this.toggleModal();
+  }
+
+  onSelect(event: NgxDropzoneChangeEvent) {
+    this.files.push(...event.addedFiles);
+    this.itemDetailService.uploadImage(event.addedFiles[0]).subscribe(result => {
+      console.log(result);
+      this.image = result.message;
+    });
+  }
+
+  onRemove(file: File) {
+    console.log(file);
+    this.files.splice(this.files.indexOf(file), 1);
   }
 
 }

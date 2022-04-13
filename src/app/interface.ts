@@ -1,3 +1,5 @@
+import { DropzoneConfigInterface } from "ngx-dropzone-wrapper";
+
 export interface PlantItem {
     id: number;
     name: string;

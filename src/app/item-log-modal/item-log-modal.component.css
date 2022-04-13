@@ -24,6 +24,7 @@
     margin-top: 10px;
 }
 
-figure {
-    margin-top: 10px;
+.dropzone {
+    border: 0px;
+    height: 100%;
 }

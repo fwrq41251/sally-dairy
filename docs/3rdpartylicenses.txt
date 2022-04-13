@@ -81,6 +81,9 @@ MIT
 masonry-layout
 MIT
 
+ngx-dropzone
+MIT
+
 ngx-masonry
 MIT
 MIT License

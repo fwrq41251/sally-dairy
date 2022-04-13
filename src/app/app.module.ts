@@ -15,6 +15,7 @@ import { ItemLogModalComponent } from './item-log-modal/item-log-modal.component
 import { StarTagComponent } from './star-tag/star-tag.component';
 import { NgxMasonryModule } from 'ngx-masonry';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxDropzoneModule } from 'ngx-dropzone';
 
 @NgModule({
   declarations: [
@@ -35,8 +36,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     NgxMasonryModule,
     BrowserAnimationsModule,
+    NgxDropzoneModule,
   ],
-  providers: [DatePipe],
+  providers: [DatePipe,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
