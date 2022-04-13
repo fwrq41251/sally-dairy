@@ -66,11 +66,16 @@ export class ItemLogModalComponent implements OnInit {
   }
 
   onSelect(event: NgxDropzoneChangeEvent) {
-    this.files.push(...event.addedFiles);
-    this.itemDetailService.uploadImage(event.addedFiles[0]).subscribe(result => {
-      console.log(result);
-      this.image = result.message;
-    });
+    console.log(event);
+    if (event.addedFiles.length > 0) {
+      this.files.push(...event.addedFiles);
+      this.itemDetailService.uploadImage(event.addedFiles[0]).subscribe(result => {
+        console.log(result);
+        this.image = result.message;
+        event.source.disabled = false;
+      });
+    }
+    event.source.disabled = true;
   }
 
   onRemove(file: File) {

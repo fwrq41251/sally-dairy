@@ -1,5 +1,6 @@
 @import url('https://cdn-uicons.flaticon.com/uicons-solid-straight/css/uicons-solid-straight.css');
 @import url('https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css');
+@import url('https://cdn-uicons.flaticon.com/uicons-regular-straight/css/uicons-regular-straight.css');
 
 .columns {
     margin: 10px;
@@ -35,6 +36,10 @@ i {
     padding-left: 30px;
 }
 
+.message {
+    width: 320px;
+}
+
 .textarea {
     background-color: #effaf5;
     -webkit-box-shadow: none;
@@ -47,23 +52,30 @@ i {
     margin-right: 20px;
 }
 
+.edit-icon {
+    /* position: ; */
+}
+
 .masonry {
     margin: 20px;
 }
 
 .masonry-item {
-    width: calc(100%/3 - 34px);;
+    width: calc(100%/3 - 34px);
+    ;
     margin-bottom: 30px;
 }
 
-@media screen and (min-width: 1024px ) and (max-width: 1215px)  {
+@media screen and (min-width: 1024px) and (max-width: 1215px) {
     .masonry-item {
-        width: calc(100%/2 - 34px);;
+        width: calc(100%/2 - 34px);
+        ;
     }
 }
 
-@media screen and (max-width: 1023px)  {
+@media screen and (max-width: 1023px) {
     .masonry-item {
-        width: calc(100% - 34px);;
+        width: calc(100% - 34px);
+        ;
     }
 }
