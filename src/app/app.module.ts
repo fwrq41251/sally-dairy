@@ -14,6 +14,7 @@ import { DatePipe } from '@angular/common';
 import { ItemLogModalComponent } from './item-log-modal/item-log-modal.component';
 import { StarTagComponent } from './star-tag/star-tag.component';
 import { NgxMasonryModule } from 'ngx-masonry';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { NgxMasonryModule } from 'ngx-masonry';
     HttpClientModule,
     FormsModule,
     NgxMasonryModule,
+    BrowserAnimationsModule,
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

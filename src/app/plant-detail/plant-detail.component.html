@@ -20,8 +20,8 @@
                 <button id="add-btn" class="button" (click)="logModal.toggleModal()">Add</button>
             </div>
         </div>
-        <div class="masonry">
-            <div class="masonry-item" *ngFor="let log of logs">
+        <ngx-masonry class="masonry" [options]="masonryOptions">
+            <div ngxMasonryItem class="masonry-item" *ngFor="let log of logs">
                 <div class="card">
                     <div class="card-image" *ngIf="log.image">
                         <figure class="image is-1by1">
@@ -37,7 +37,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </ngx-masonry>
     </div>
 </div>
 <app-item-log-modal (newLogEvent)="reloadPage()" [itemId]="plantId" #logModal></app-item-log-modal>

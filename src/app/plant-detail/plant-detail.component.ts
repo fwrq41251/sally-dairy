@@ -4,6 +4,7 @@ import * as bulmaCalendar from 'bulma-calendar';
 import { emptyItem, ItemLog, PlantItem } from '../interface';
 import { PlantDetailService } from '../plant-detail.service';
 import { PlantItemService } from '../plant-item.service';
+import { NgxMasonryOptions } from 'ngx-masonry';
 
 @Component({
   selector: 'app-plant-detail',
@@ -16,6 +17,10 @@ export class PlantDetailComponent implements OnInit {
   calendar!: bulmaCalendar;
   plantItem: PlantItem = emptyItem();
   logs: ItemLog[] = [];
+  masonryOptions: NgxMasonryOptions = {
+    gutter: 50,
+    horizontalOrder: true
+  };
 
   constructor(
     private route: ActivatedRoute,

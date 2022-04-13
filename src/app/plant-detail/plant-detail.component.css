@@ -48,12 +48,22 @@ i {
 }
 
 .masonry {
-    display: grid;
-    grid-auto-rows: 100px;
-    grid-gap: 50px;
-    grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
+    margin: 20px;
 }
 
 .masonry-item {
+    width: calc(100%/3 - 34px);;
     margin-bottom: 30px;
+}
+
+@media screen and (min-width: 1024px ) and (max-width: 1215px)  {
+    .masonry-item {
+        width: calc(100%/2 - 34px);;
+    }
+}
+
+@media screen and (max-width: 1023px)  {
+    .masonry-item {
+        width: calc(100% - 34px);;
+    }
 }
