@@ -20,7 +20,7 @@
                 <button id="add-btn" class="button" (click)="logModal.toggleModal()">Add</button>
             </div>
         </div>
-        <ngx-masonry class="masonry" [options]="masonryOptions">
+        <ngx-masonry class="masonry" [options]="masonryOptions" [ordered]="true">
             <div ngxMasonryItem class="masonry-item" *ngFor="let log of logs">
                 <div class="card">
                     <header class="card-header">
