@@ -38,7 +38,7 @@
                             <img [src]="log.image" alt="Placeholder image">
                         </figure>
                     </div>
-                    <div class="card-content">
+                    <div class="card-content" *ngIf="log.log">
                         <div class="content">
                             {{log.log}}
                             <br>

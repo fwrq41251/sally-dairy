@@ -4,7 +4,7 @@
         <form class="box" (ngSubmit)="onSubmmit()">
             <div #logArea class="textarea" contenteditable="true" (input)="log=logArea.innerText"
                 (paste)="onPaste($event)"></div>
-            <ngx-dropzone class="dropzone" [maxFileSize]="1048576" (change)="onSelect($event)" *ngIf="files.length>=0">
+            <ngx-dropzone class="dropzone" (change)="onSelect($event)" *ngIf="files.length>=0">
                 <ngx-dropzone-label>Click or Drop image here.</ngx-dropzone-label>
                 <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" [file]="f" *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
                 </ngx-dropzone-image-preview>
