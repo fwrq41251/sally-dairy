@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/co
 import { PlantItem } from '../interface';
 import { PlantItemService } from '../plant-item.service';
 import { DatePipe } from '@angular/common';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-plant-table',
@@ -67,6 +68,11 @@ export class PlantTableComponent implements OnInit {
 
   reloadPage() {
     window.location.reload();
+  }
+
+  drop(event: CdkDragDrop<string[]>) {
+    console.log(event);
+    moveItemInArray(this.items, event.previousIndex, event.currentIndex);
   }
 
 }

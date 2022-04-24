@@ -9,12 +9,16 @@
     width: 150px;
 }
 
+.table-container {
+    overflow-y: auto;
+}
+
 table {
     background-color: #F4FCD9;
     white-space: nowrap;
     table-layout: fixed;
-    overflow:visible;
 }
+
 
 th {
     font-weight: 600;
@@ -24,6 +28,18 @@ th {
 /* prevent detail-btn overflow */
 #head {
     width: 200px;
+}
+
+.cdk-drag-preview {
+    opacity: 0.5;
+}
+
+.cdk-drag-placeholder {
+    opacity: 0;
+}
+
+.cdk-drag-animating {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
 
 tr:hover {
@@ -41,9 +57,12 @@ tr input.date-picker {
 /* table button style */
 table .tag {
     cursor: pointer;
+    margin-left: 3px;
+}
+
+#detail-btn {
     position: relative;
     top: 7px;
-    margin-left: 3px;
 }
 
 #delete-btn {
@@ -53,6 +72,7 @@ table .tag {
 
 td {
     padding: 1px;
+    vertical-align: middle;
 }
 
 tr input {
@@ -68,8 +88,6 @@ input[type="date"]:focus {
 
 .checkbox input {
     width: 40px;
-    position: relative;
-    top: 10px;
     height: 15px;
 }
 
@@ -80,18 +98,14 @@ i {
 }
 
 #rating {
-    position: relative;
-    left: 10px;
-    top: 7px;
+    margin-left: 10px;
     cursor: pointer;
 }
 
-td .panel {
-    margin-top: 8px;
-    background-color: white;
-    border-radius: 3px;
-    position: fixed;
-    z-index: 1;
+.dropdown-content {
+    width: 118px;
+    padding-bottom: 0px;
+    padding-top: 5px;
 }
 
 .panel-block,

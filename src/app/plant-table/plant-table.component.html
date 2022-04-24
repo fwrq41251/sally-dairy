@@ -20,27 +20,38 @@
                 <th><i class="fi fi-br-heart"></i>Rating</th>
                 <th><i class="fi fi-br-check"></i>SaveSeed</th>
             </thead>
-            <tbody>
-                <tr *ngFor="let item of items" (change)="editItem(item)">
-                    <td style="width: 15px;" (mouseenter)="item.showDetailButton = true"
+            <tbody cdkDropList (cdkDropListDropped)="drop($event)">
+                <tr *ngFor="let item of items" (change)="editItem(item)" cdkDrag>
+                    <td (mouseenter)="item.showDetailButton = true"
                         (mouseleave)="item.showDetailButton = false">
                         <input type="text" class="input" [(ngModel)]="item.name">
-                        <span id="detail-btn" [routerLink]="['/plant-detail', item.id]" class="tag"
-                            *ngIf="item.showDetailButton"><i class="fi fi-br-interlining"></i>detail</span>
+                        <span id="detail-btn" [routerLink]="['/plant-detail', item.id]" class="tag" *ngIf="item.showDetailButton">
+                            <i class="fi fi-br-interlining"></i>
+                            detail
+                        </span>
                     </td>
                     <td><input type="text" class="input" [(ngModel)]="item.category"></td>
                     <td><input type="date" class="input date-picker is-unselectable" [(ngModel)]="item.sowDate"></td>
                     <td><input type="date" class="input date-picker is-unselectable" [(ngModel)]="item.bloomDate"></td>
-                    <td><input type="date" class="input date-picker is-unselectable" [(ngModel)]="item.harvestDate"></td>
-                    <td (click)="item.showRatingPanel=true" (blur)="item.showRatingPanel=false" tabindex="1">
-                        <span id="rating" class="is-unselectable">
-                            <app-star-tag [count]="item.rating"></app-star-tag>
-                        </span>
-                        <nav class="panel" *ngIf="item.showRatingPanel">
-                            <a *ngFor="let r of [5, 4, 3, 2, 1]" class="panel-block" (click)="setRating(r, item, $event)">
-                                <app-star-tag [count]="r"></app-star-tag>
-                            </a>
-                        </nav>
+                    <td><input type="date" class="input date-picker is-unselectable" [(ngModel)]="item.harvestDate">
+                    </td>
+                    <td (click)="item.showRatingPanel=!item.showRatingPanel" (blur)="item.showRatingPanel=false" tabindex="1">
+                        <div class="dropdown" [ngClass]="item.showRatingPanel ? 'is-active' : ''">
+                            <div class="dropdown-trigger">
+                                <span id="rating" class="is-unselectable .is-vcentered" aria-haspopup="true"
+                                    aria-controls="dropdown-menu">
+                                    <app-star-tag [count]="item.rating"></app-star-tag>
+                                </span>
+                            </div>
+                            <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                                <div class="dropdown-content">
+                                    <a *ngFor="let r of [5, 4, 3, 2, 1]" class="dropdown-item"
+                                        (click)="setRating(r, item, $event)">
+                                        <app-star-tag [count]="r"></app-star-tag>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </td>
                     <td>
                         <label class="checkbox">
@@ -54,6 +65,7 @@
         </table>
     </div>
 </div>
+
 
 <app-plant-item-modal (newItemEvent)="reloadPage()" #itemModal></app-plant-item-modal>
 <app-delete-item-modal (deleteItemEvent)="reloadPage()" #deleteModal></app-delete-item-modal>
