@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { CommonResult, NewPlantItem, PlantItem } from './interface';
+import { CommonResult, ItemOrder, NewPlantItem, PlantItem } from './interface';
 
 @Injectable({
   providedIn: 'root'
@@ -39,5 +39,7 @@ export class PlantItemService {
     return this.http.get<string[]>(this.domain + "categories");
   }
 
-
+  saveItemOrders(itemOrders: ItemOrder[]): Observable<CommonResult> {
+    return this.http.post<CommonResult>(this.domain + "save-plants-order", itemOrders);
+  }
 }

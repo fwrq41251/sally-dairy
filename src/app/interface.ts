@@ -10,6 +10,7 @@ export interface PlantItem {
     rating: number;
     saveSeed: boolean;
     note: string;
+    order: number;
 }
 
 export function emptyItem(): PlantItem {
@@ -23,6 +24,7 @@ export function emptyItem(): PlantItem {
         rating: 1,
         saveSeed: false,
         note: "",
+        order: 0,
     };
 }
 
@@ -48,4 +50,9 @@ export interface ItemLog {
     log: string;
     image: string;
     createDate: string;
+}
+
+export interface ItemOrder {
+    id: number;
+    order: number;
 }

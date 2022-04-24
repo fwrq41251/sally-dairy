@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
-import { PlantItem } from '../interface';
+import { ItemOrder, PlantItem } from '../interface';
 import { PlantItemService } from '../plant-item.service';
 import { DatePipe } from '@angular/common';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
@@ -39,6 +39,7 @@ export class PlantTableComponent implements OnInit {
           note: "",
           showDetailButton: false,
           showRatingPanel: false,
+          order: p.order,
         }
       });
       this.fullItems = this.items;
@@ -62,7 +63,7 @@ export class PlantTableComponent implements OnInit {
   setRating(rating: number, item: PlantItemRow, event: Event): void {
     item.rating = rating;
     this.editItem(item);
-    item.showRatingPanel=false
+    item.showRatingPanel = false
     event.stopPropagation();
   }
 
@@ -71,8 +72,18 @@ export class PlantTableComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<string[]>) {
-    console.log(event);
     moveItemInArray(this.items, event.previousIndex, event.currentIndex);
+    let order = 1;
+    let itemOrders: ItemOrder[] = [];
+    for (let i of this.items) {
+      if (i.order != order) {
+        itemOrders.push({ id: i.id, order: order });
+      }
+      order++;
+    }
+    this.plantItmeService.saveItemOrders(itemOrders).subscribe(result => {
+      console.log(result);
+    });
   }
 
 }
