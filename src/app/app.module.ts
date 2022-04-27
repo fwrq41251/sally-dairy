@@ -16,7 +16,9 @@ import { StarTagComponent } from './star-tag/star-tag.component';
 import { NgxMasonryModule } from 'ngx-masonry';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxDropzoneModule } from 'ngx-dropzone';
-import { DragDropModule} from '@angular/cdk/drag-drop';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { DragDropModule} from '@angular/cdk/drag-drop';
     BrowserAnimationsModule,
     NgxDropzoneModule,
     DragDropModule,
+    MatIconModule,
+    MatMenuModule
   ],
   providers: [DatePipe,
   ],

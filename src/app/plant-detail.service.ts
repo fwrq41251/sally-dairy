@@ -26,4 +26,8 @@ export class PlantDetailService {
     formData.append('file', file, file.name);
     return this.http.post<CommonResult>(this.domain + "upload-img", formData);
   }
+
+  deleteLog(id: number) : Observable<CommonResult> {
+    return this.http.get<CommonResult>(this.domain + "delete-log/" + id);
+  }
 }

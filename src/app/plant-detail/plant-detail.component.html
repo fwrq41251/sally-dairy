@@ -27,11 +27,24 @@
                         <p class="card-header-title">
                             <time datetime="2016-1-1">{{log.createDate | date:'d MMM y'}}</time>
                         </p>
-                        <button class="card-header-icon" aria-label="more options">
-                            <span class="icon">
-                                <i class="fi fi-rs-angle-down"></i>
-                            </span>
-                        </button>
+                        <div class="dropdown" [ngClass]="log.showMenu ? 'is-active' : ''">
+                            <div class="dropdown-trigger">
+                                <button class="card-header-icon" aria-haspopup="true" aria-controls="dropdown-menu"
+                                    (click)="log.showMenu=!log.showMenu">
+                                    <mat-icon>more_vert</mat-icon>
+                                </button>
+                            </div>
+                            <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                                <div class="dropdown-content">
+                                    <a class="icon-text dropdown-item" (click)="deleteLog(log)">
+                                        <span class="icon">
+                                            <i class="fi fi-rs-trash"></i>
+                                        </span>
+                                        <span>delete</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </header>
                     <div class="card-image" *ngIf="log.image">
                         <figure class="image">

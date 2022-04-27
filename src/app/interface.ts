@@ -50,6 +50,7 @@ export interface ItemLog {
     log: string;
     image: string;
     createDate: string;
+    showMenu?: boolean;
 }
 
 export interface ItemOrder {

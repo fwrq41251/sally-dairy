@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import * as bulmaCalendar from 'bulma-calendar';
 import { emptyItem, ItemLog, PlantItem } from '../interface';
@@ -26,6 +26,7 @@ export class PlantDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private plantItemService: PlantItemService,
     private plantDetailService: PlantDetailService,
+    private renderer: Renderer2
   ) { }
 
   ngOnInit(): void {
@@ -55,14 +56,23 @@ export class PlantDetailComponent implements OnInit {
   }
 
   saveNote(item: PlantItem) {
-    console.log(item);
-    this.plantItemService.editItem(item).subscribe(result => {
-      console.log(result);
-    });
+    if (item.note) {
+      this.plantItemService.editItem(item).subscribe(result => {
+        console.log(result);
+      });
+    }
   }
 
   reloadPage() {
     window.location.reload();
+  }
+
+  deleteLog(log: ItemLog) {
+    this.plantDetailService.deleteLog(log.id).subscribe(_ => {
+      this.plantDetailService.getLogs(this.plantId).subscribe(logs => {
+        this.logs = logs;
+      });
+    });
   }
 
 }

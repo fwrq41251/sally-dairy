@@ -52,8 +52,9 @@ i {
     margin-right: 20px;
 }
 
-.edit-icon {
-    /* position: ; */
+.card button {
+    border: 0px;
+    background-color: white;
 }
 
 .masonry {
@@ -64,6 +65,10 @@ i {
     width: calc(100%/3 - 34px);
     ;
     margin-bottom: 30px;
+}
+
+.dropdown-content {
+    width: 120px;
 }
 
 @media screen and (min-width: 1024px) and (max-width: 1215px) {
