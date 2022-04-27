@@ -47,8 +47,10 @@ export class PlantTableComponent implements OnInit {
   }
 
   filterItems(name: string): void {
-    if (name && name.length > 0) {
-      this.items = this.items.filter(i => i.name.startsWith(name))
+    if (name) {
+      this.items = this.fullItems.filter(i => {
+        return i.name.toLowerCase().includes(name.toLowerCase());
+      });
     } else {
       this.items = this.fullItems;
     }

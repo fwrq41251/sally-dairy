@@ -35,7 +35,7 @@
                     <td><input type="date" class="input date-picker is-unselectable" [(ngModel)]="item.bloomDate"></td>
                     <td><input type="date" class="input date-picker is-unselectable" [(ngModel)]="item.harvestDate">
                     </td>
-                    <td (click)="item.showRatingPanel=!item.showRatingPanel" (blur)="item.showRatingPanel=false" tabindex="1">
+                    <td (click)="item.showRatingPanel=!item.showRatingPanel" (blur)="item.showRatingPanel=false" tabindex="0">
                         <div class="dropdown" [ngClass]="item.showRatingPanel ? 'is-active' : ''">
                             <div class="dropdown-trigger">
                                 <span id="rating" class="is-unselectable .is-vcentered" aria-haspopup="true"
