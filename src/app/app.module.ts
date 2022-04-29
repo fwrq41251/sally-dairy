@@ -18,7 +18,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatIconModule } from '@angular/material/icon';
-import { MatMenuModule} from '@angular/material/menu';
+import { MatMenuModule } from '@angular/material/menu';
+import { ClickToggleDirective } from './click-toggle.directive';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { MatMenuModule} from '@angular/material/menu';
     PlantDetailComponent,
     DeleteItemModalComponent,
     ItemLogModalComponent,
-    StarTagComponent
+    StarTagComponent,
+    ClickToggleDirective,
   ],
   imports: [
     BrowserModule,
@@ -42,7 +44,7 @@ import { MatMenuModule} from '@angular/material/menu';
     NgxDropzoneModule,
     DragDropModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
   ],
   providers: [DatePipe,
   ],

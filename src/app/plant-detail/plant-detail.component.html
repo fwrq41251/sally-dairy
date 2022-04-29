@@ -27,10 +27,9 @@
                         <p class="card-header-title">
                             <time datetime="2016-1-1">{{log.createDate | date:'d MMM y'}}</time>
                         </p>
-                        <div class="dropdown" [ngClass]="log.showMenu ? 'is-active' : ''">
+                        <div class="dropdown" appClickToggle>
                             <div class="dropdown-trigger">
-                                <button class="card-header-icon" aria-haspopup="true" aria-controls="dropdown-menu"
-                                    (click)="log.showMenu=!log.showMenu">
+                                <button class="card-header-icon" aria-haspopup="true" aria-controls="dropdown-menu">
                                     <mat-icon>more_vert</mat-icon>
                                 </button>
                             </div>

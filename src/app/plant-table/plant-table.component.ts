@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { AfterContentChecked, AfterViewChecked, AfterViewInit, Component, ElementRef, OnChanges, OnInit, Renderer2, SimpleChanges, ViewChild } from '@angular/core';
 import { ItemOrder, PlantItem } from '../interface';
 import { PlantItemService } from '../plant-item.service';
 import { DatePipe } from '@angular/common';
@@ -19,6 +19,7 @@ export class PlantTableComponent implements OnInit {
     private plantItmeService: PlantItemService, private datepipe: DatePipe
   ) { }
 
+
   ngOnInit(): void {
     this.plantItmeService.getItems().subscribe(plants => {
       plants.forEach(p => {
@@ -37,8 +38,6 @@ export class PlantTableComponent implements OnInit {
           rating: p.rating,
           saveSeed: p.saveSeed,
           note: "",
-          showDetailButton: false,
-          showRatingPanel: false,
           order: p.order,
         }
       });
@@ -65,8 +64,6 @@ export class PlantTableComponent implements OnInit {
   setRating(rating: number, item: PlantItemRow, event: Event): void {
     item.rating = rating;
     this.editItem(item);
-    item.showRatingPanel = false
-    event.stopPropagation();
   }
 
   reloadPage() {
@@ -88,9 +85,12 @@ export class PlantTableComponent implements OnInit {
     });
   }
 
+  formatDate(date: string) {
+    console.log(date);
+  }
+
 }
 
 interface PlantItemRow extends PlantItem {
-  showDetailButton: boolean;
-  showRatingPanel: boolean;
+  showDetailButton?: boolean;
 }

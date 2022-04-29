@@ -22,21 +22,20 @@
             </thead>
             <tbody cdkDropList (cdkDropListDropped)="drop($event)">
                 <tr *ngFor="let item of items" (change)="editItem(item)" cdkDrag>
-                    <td (mouseenter)="item.showDetailButton = true"
-                        (mouseleave)="item.showDetailButton = false">
+                    <td (mouseenter)="item.showDetailButton = true" (mouseleave)="item.showDetailButton = false">
                         <input type="text" class="input" [(ngModel)]="item.name">
-                        <span id="detail-btn" [routerLink]="['/plant-detail', item.id]" class="tag" *ngIf="item.showDetailButton">
+                        <a id="detail-btn" [routerLink]="['/plant-detail', item.id]" class="tag"
+                            *ngIf="item.showDetailButton">
                             <i class="fi fi-br-interlining"></i>
                             detail
-                        </span>
+                        </a>
                     </td>
                     <td><input type="text" class="input" [(ngModel)]="item.category"></td>
                     <td><input type="date" class="input date-picker is-unselectable" [(ngModel)]="item.sowDate"></td>
                     <td><input type="date" class="input date-picker is-unselectable" [(ngModel)]="item.bloomDate"></td>
                     <td><input type="date" class="input date-picker is-unselectable" [(ngModel)]="item.harvestDate">
-                    </td>
-                    <td (click)="item.showRatingPanel=!item.showRatingPanel" (blur)="item.showRatingPanel=false" tabindex="0">
-                        <div class="dropdown" [ngClass]="item.showRatingPanel ? 'is-active' : ''">
+                    <td>
+                        <div class="dropdown" appClickToggle>
                             <div class="dropdown-trigger">
                                 <span id="rating" class="is-unselectable .is-vcentered" aria-haspopup="true"
                                     aria-controls="dropdown-menu">
@@ -57,8 +56,9 @@
                         <label class="checkbox">
                             <input type="checkbox" [(ngModel)]="item.saveSeed">
                         </label>
-                        <span id="delete-btn" class="tag is-danger"
-                            (click)="deleteModal.delteItem(item.id)">delete</span>
+                        <a id="delete-btn" class="tag is-danger" (click)="deleteModal.delteItem(item.id)">
+                            delete
+                        </a>
                     </td>
                 </tr>
             </tbody>

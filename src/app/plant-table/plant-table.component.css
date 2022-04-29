@@ -9,18 +9,22 @@
     width: 150px;
 }
 
+a:hover, a:visited, a:link, a:active
+{
+    text-decoration: none;
+}
+
 .table-container {
     overflow-y: auto;
 }
 
-table {
+.table-container table {
     background-color: #F4FCD9;
     white-space: nowrap;
     table-layout: fixed;
 }
 
-
-th {
+.table-container th {
     font-weight: 600;
     width: 160px;
 }
@@ -56,13 +60,7 @@ tr input.date-picker {
 
 /* table button style */
 table .tag {
-    cursor: pointer;
     margin-left: 3px;
-}
-
-#detail-btn {
-    position: relative;
-    top: 7px;
 }
 
 #delete-btn {
