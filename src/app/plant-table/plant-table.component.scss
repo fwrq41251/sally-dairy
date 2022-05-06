@@ -200,3 +200,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
         opacity: 0.6;
     }
 }
+
+@media screen and (max-width:768px) {
+    #search {
+        width: 120px;
+    }
+}

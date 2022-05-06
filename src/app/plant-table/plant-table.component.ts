@@ -5,6 +5,7 @@ import { DatePipe } from '@angular/common';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import * as bulmaCalendar from 'bulma-calendar';
 import * as moment from 'moment';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-plant-table',
@@ -23,16 +24,25 @@ export class PlantTableComponent implements OnInit, AfterViewChecked {
   harvestCalendars: bulmaCalendar[] = [];
   calendarOption: bulmaCalendar.Options = {
     type: "date",
+    displayMode: 'default',
     color: "primary",
     showHeader: false,
     dateFormat: 'MMM d, y',
     lang: 'en',
     showButtons: false,
   };
+  isMobile = true;
 
   constructor(
-    private plantItmeService: PlantItemService, private datepipe: DatePipe
-  ) { }
+    private plantItmeService: PlantItemService, private datepipe: DatePipe, breakpointObserver: BreakpointObserver
+  ) {
+    breakpointObserver.observe([
+      Breakpoints.XSmall,
+      Breakpoints.Small,
+    ]).subscribe(result => {
+      this.isMobile = result.matches;
+    });
+  }
 
   ngAfterViewChecked(): void {
     if (this.sowCalendars.length == 0) {

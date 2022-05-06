@@ -21,7 +21,7 @@
                 <th><i class="fi fi-br-check"></i>SaveSeed</th>
             </thead>
             <tbody cdkDropList (cdkDropListDropped)="drop($event)">
-                <tr *ngFor="let item of items" (change)="editItem(item)" cdkDrag>
+                <tr *ngFor="let item of items" (change)="editItem(item)" cdkDrag [cdkDragDisabled]="isMobile">
                     <td (mouseenter)="item.showDetailButton = true" (mouseleave)="item.showDetailButton = false" cdkDragHandle>
                         <input type="text" class="input first-column" [(ngModel)]="item.name">
                         <a id="detail-btn" [routerLink]="['/plant-detail', item.id]" class="tag"
