@@ -1,23 +1,87 @@
-import { AfterContentChecked, AfterViewChecked, AfterViewInit, Component, ElementRef, OnChanges, OnInit, Renderer2, SimpleChanges, ViewChild } from '@angular/core';
+import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, ElementRef, OnChanges, OnInit, Renderer2, SimpleChanges, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ItemOrder, PlantItem } from '../interface';
 import { PlantItemService } from '../plant-item.service';
 import { DatePipe } from '@angular/common';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import * as bulmaCalendar from 'bulma-calendar';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-plant-table',
   templateUrl: './plant-table.component.html',
-  styleUrls: ['./plant-table.component.css'],
+  styleUrls: [
+    './plant-table.component.scss',
+  ],
 })
 
-export class PlantTableComponent implements OnInit {
+export class PlantTableComponent implements OnInit, AfterViewChecked {
 
   items: PlantItemRow[] = [];
   fullItems: PlantItemRow[] = [];
+  sowCalendars: bulmaCalendar[] = [];
+  bloomCalendars: bulmaCalendar[] = [];
+  harvestCalendars: bulmaCalendar[] = [];
+  calendarOption: bulmaCalendar.Options = {
+    type: "date",
+    color: "primary",
+    showHeader: false,
+    dateFormat: 'MMM d, y',
+    lang: 'en',
+    showButtons: false,
+  };
 
   constructor(
     private plantItmeService: PlantItemService, private datepipe: DatePipe
   ) { }
+
+  ngAfterViewChecked(): void {
+    if (this.sowCalendars.length == 0) {
+      this.sowCalendars = bulmaCalendar.attach('.date-s', this.calendarOption);
+
+      for (let i = 0; i < this.sowCalendars.length; i++) {
+        let item = this.items[i];
+        let calendar = this.sowCalendars[i];
+        calendar.value(item.sowDate);
+        calendar.on('select', _ => {
+          item.sowDate = getFormattedDate(calendar);
+          this.editItem(item);
+        });
+      }
+    }
+
+    if (this.bloomCalendars.length == 0) {
+      this.bloomCalendars = bulmaCalendar.attach('.date-b', this.calendarOption);
+
+      for (let i = 0; i < this.bloomCalendars.length; i++) {
+        let item = this.items[i];
+        let calendar = this.bloomCalendars[i];
+        calendar.value(item.bloomDate);
+        calendar.on('select', _ => {
+          item.bloomDate = getFormattedDate(calendar);
+          this.editItem(item);
+        });
+      }
+    }
+
+    if (this.harvestCalendars.length == 0) {
+      this.harvestCalendars = bulmaCalendar.attach('.date-h', this.calendarOption);
+
+      for (let i = 0; i < this.harvestCalendars.length; i++) {
+        let item = this.items[i];
+        let calendar = this.harvestCalendars[i];
+        calendar.value(item.harvestDate);
+        calendar.on('select', _ => {
+          item.harvestDate = getFormattedDate(calendar);
+          this.editItem(item);
+        });
+      }
+    }
+
+    function getFormattedDate(calendar: bulmaCalendar) {
+      let date = calendar.startDate;
+      return (moment(date).format('yyyy-MM-DD'));
+    }
+  }
 
 
   ngOnInit(): void {

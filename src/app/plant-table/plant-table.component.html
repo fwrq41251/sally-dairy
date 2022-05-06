@@ -22,8 +22,8 @@
             </thead>
             <tbody cdkDropList (cdkDropListDropped)="drop($event)">
                 <tr *ngFor="let item of items" (change)="editItem(item)" cdkDrag>
-                    <td (mouseenter)="item.showDetailButton = true" (mouseleave)="item.showDetailButton = false">
-                        <input type="text" class="input" [(ngModel)]="item.name">
+                    <td (mouseenter)="item.showDetailButton = true" (mouseleave)="item.showDetailButton = false" cdkDragHandle>
+                        <input type="text" class="input first-column" [(ngModel)]="item.name">
                         <a id="detail-btn" [routerLink]="['/plant-detail', item.id]" class="tag"
                             *ngIf="item.showDetailButton">
                             <i class="fi fi-br-interlining"></i>
@@ -31,9 +31,9 @@
                         </a>
                     </td>
                     <td><input type="text" class="input" [(ngModel)]="item.category"></td>
-                    <td><input type="date" class="input date-picker is-unselectable" [(ngModel)]="item.sowDate"></td>
-                    <td><input type="date" class="input date-picker is-unselectable" [(ngModel)]="item.bloomDate"></td>
-                    <td><input type="date" class="input date-picker is-unselectable" [(ngModel)]="item.harvestDate">
+                    <td><input type="date" class="input date-picker date-s is-unselectable" [(ngModel)]="item.sowDate"></td>
+                    <td><input type="date" class="input date-picker date-b is-unselectable" [(ngModel)]="item.bloomDate"></td>
+                    <td><input type="date" class="input date-picker date-h is-unselectable" [(ngModel)]="item.harvestDate">
                     <td>
                         <div class="dropdown" appClickToggle>
                             <div class="dropdown-trigger">

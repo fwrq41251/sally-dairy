@@ -44,6 +44,7 @@ export class PlantDetailComponent implements OnInit {
       isRange: true,
       showHeader: false,
       showTodayButton: false,
+      lang: 'en',
     })[0];
     this.calendar.on('select', event => {
       this.showSelected();

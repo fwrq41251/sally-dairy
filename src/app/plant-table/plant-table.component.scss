@@ -9,8 +9,10 @@
     width: 150px;
 }
 
-a:hover, a:visited, a:link, a:active
-{
+a:hover,
+a:visited,
+a:link,
+a:active {
     text-decoration: none;
 }
 
@@ -46,6 +48,13 @@ a:hover, a:visited, a:link, a:active
     transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
 
+.drag-btn {
+    position: absolute;
+    top: 11px;
+    left: -2px;
+}
+
+
 tr:hover {
     background-color: #E3CAA5;
 }
@@ -63,12 +72,18 @@ table .tag {
     margin-left: 3px;
 }
 
+#detail-btn {
+    position: relative;
+    top: 7px;
+}
+
 #delete-btn {
     float: right;
     margin-right: 5px;
 }
 
 td {
+    position: relative;
     padding: 1px;
     vertical-align: middle;
 }
@@ -133,4 +148,55 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     right: 0;
     top: 0;
     width: auto;
+}
+
+%no-boarder {
+    border: 0px;
+    outline: none;
+    box-shadow: none;
+}
+
+:host ::ng-deep {
+
+    .datetimepicker-dummy {
+
+        .datetimepicker-dummy-wrapper {
+            @extend %no-boarder;
+            background-color: inherit;
+        }
+
+        .datetimepicker-dummy-wrapper:hover {
+            @extend %no-boarder;
+        }
+
+        .datetimepicker-dummy-wrapper.is-active {
+            @extend %no-boarder;
+        }
+
+        .datetimepicker-dummy-wrapper input {
+            cursor: pointer;
+            word-spacing: 0;
+        }
+
+
+        .datetimepicker-dummy-input:first-child {
+            text-indent: 0;
+        }
+
+    }
+
+    .datetimepicker-dummy-wrapper::before {
+        display: none;
+    }
+
+    .datetimepicker-clear-button {
+        display: none;
+    }
+}
+
+@media screen and (max-width:1408px) {
+    #detail-btn {
+        left: -60px;
+        opacity: 0.6;
+    }
 }
