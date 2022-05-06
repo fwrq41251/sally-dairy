@@ -1,11 +1,10 @@
-import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, ElementRef, OnChanges, OnInit, Renderer2, SimpleChanges, ViewChild, ViewEncapsulation } from '@angular/core';
+import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, ElementRef, EventEmitter, OnChanges, OnInit, Renderer2, SimpleChanges, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ItemOrder, PlantItem } from '../interface';
 import { PlantItemService } from '../plant-item.service';
 import { DatePipe } from '@angular/common';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import * as bulmaCalendar from 'bulma-calendar';
-import * as moment from 'moment';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { DatepickerValue } from '../table-datepicker/table-datepicker.component';
 
 @Component({
   selector: 'app-plant-table',
@@ -15,22 +14,10 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
   ],
 })
 
-export class PlantTableComponent implements OnInit, AfterViewChecked {
+export class PlantTableComponent implements OnInit {
 
   items: PlantItemRow[] = [];
   fullItems: PlantItemRow[] = [];
-  sowCalendars: bulmaCalendar[] = [];
-  bloomCalendars: bulmaCalendar[] = [];
-  harvestCalendars: bulmaCalendar[] = [];
-  calendarOption: bulmaCalendar.Options = {
-    type: "date",
-    displayMode: 'default',
-    color: "primary",
-    showHeader: false,
-    dateFormat: 'MMM d, y',
-    lang: 'en',
-    showButtons: false,
-  };
   isMobile = true;
 
   constructor(
@@ -43,56 +30,6 @@ export class PlantTableComponent implements OnInit, AfterViewChecked {
       this.isMobile = result.matches;
     });
   }
-
-  ngAfterViewChecked(): void {
-    if (this.sowCalendars.length == 0) {
-      this.sowCalendars = bulmaCalendar.attach('.date-s', this.calendarOption);
-
-      for (let i = 0; i < this.sowCalendars.length; i++) {
-        let item = this.items[i];
-        let calendar = this.sowCalendars[i];
-        calendar.value(item.sowDate);
-        calendar.on('select', _ => {
-          item.sowDate = getFormattedDate(calendar);
-          this.editItem(item);
-        });
-      }
-    }
-
-    if (this.bloomCalendars.length == 0) {
-      this.bloomCalendars = bulmaCalendar.attach('.date-b', this.calendarOption);
-
-      for (let i = 0; i < this.bloomCalendars.length; i++) {
-        let item = this.items[i];
-        let calendar = this.bloomCalendars[i];
-        calendar.value(item.bloomDate);
-        calendar.on('select', _ => {
-          item.bloomDate = getFormattedDate(calendar);
-          this.editItem(item);
-        });
-      }
-    }
-
-    if (this.harvestCalendars.length == 0) {
-      this.harvestCalendars = bulmaCalendar.attach('.date-h', this.calendarOption);
-
-      for (let i = 0; i < this.harvestCalendars.length; i++) {
-        let item = this.items[i];
-        let calendar = this.harvestCalendars[i];
-        calendar.value(item.harvestDate);
-        calendar.on('select', _ => {
-          item.harvestDate = getFormattedDate(calendar);
-          this.editItem(item);
-        });
-      }
-    }
-
-    function getFormattedDate(calendar: bulmaCalendar) {
-      let date = calendar.startDate;
-      return (moment(date).format('yyyy-MM-DD'));
-    }
-  }
-
 
   ngOnInit(): void {
     this.plantItmeService.getItems().subscribe(plants => {
@@ -144,6 +81,24 @@ export class PlantTableComponent implements OnInit, AfterViewChecked {
     window.location.reload();
   }
 
+  setDate(value: DatepickerValue, item: PlantItemRow) {
+    switch (value.type) {
+      case 1: {
+        item.sowDate = value.date;
+        break;
+      }
+      case 2: {
+        item.bloomDate = value.date;
+        break;
+      }
+      case 3: {
+        item.harvestDate = value.date;
+        break;
+      }
+    }
+    this.editItem(item);
+  }
+
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.items, event.previousIndex, event.currentIndex);
     let order = 1;
@@ -161,6 +116,15 @@ export class PlantTableComponent implements OnInit, AfterViewChecked {
 
   formatDate(date: string) {
     console.log(date);
+  }
+
+  getDatepickerValue(item: PlantItemRow, type: number) {
+    switch (type) {
+      case 1: return { date: item.sowDate, type: type };
+      case 2: return { date: item.bloomDate, type: type };
+      case 3: return { date: item.harvestDate, type: type };
+    }
+    return { date: '', type: 0 };
   }
 
 }

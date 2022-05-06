@@ -20,6 +20,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { ClickToggleDirective } from './click-toggle.directive';
+import { TableDatepickerComponent } from './table-datepicker/table-datepicker.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { ClickToggleDirective } from './click-toggle.directive';
     ItemLogModalComponent,
     StarTagComponent,
     ClickToggleDirective,
+    TableDatepickerComponent,
   ],
   imports: [
     BrowserModule,

@@ -31,9 +31,9 @@
                         </a>
                     </td>
                     <td><input type="text" class="input" [(ngModel)]="item.category"></td>
-                    <td><input type="date" class="input date-picker date-s is-unselectable" [(ngModel)]="item.sowDate"></td>
-                    <td><input type="date" class="input date-picker date-b is-unselectable" [(ngModel)]="item.bloomDate"></td>
-                    <td><input type="date" class="input date-picker date-h is-unselectable" [(ngModel)]="item.harvestDate">
+                    <td><app-table-datepicker [value]="getDatepickerValue(item, 1)" (setDateEvent)="setDate($event, item)"></app-table-datepicker></td>
+                    <td><app-table-datepicker [value]="getDatepickerValue(item, 2)" (setDateEvent)="setDate($event, item)"></app-table-datepicker></td>
+                    <td><app-table-datepicker [value]="getDatepickerValue(item, 3)" (setDateEvent)="setDate($event, item)"></app-table-datepicker></td>
                     <td>
                         <div class="dropdown" appClickToggle>
                             <div class="dropdown-trigger">

@@ -150,6 +150,19 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     width: auto;
 }
 
+@media screen and (max-width:1408px) {
+    #detail-btn {
+        left: -60px;
+        opacity: 0.6;
+    }
+}
+
+@media screen and (max-width:768px) {
+    #search {
+        width: 120px;
+    }
+}
+
 %no-boarder {
     border: 0px;
     outline: none;
@@ -191,18 +204,5 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
     .datetimepicker-clear-button {
         display: none;
-    }
-}
-
-@media screen and (max-width:1408px) {
-    #detail-btn {
-        left: -60px;
-        opacity: 0.6;
-    }
-}
-
-@media screen and (max-width:768px) {
-    #search {
-        width: 120px;
     }
 }
